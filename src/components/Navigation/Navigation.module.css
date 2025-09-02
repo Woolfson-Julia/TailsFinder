@@ -9,29 +9,34 @@
 
 .link {
   display: inline-block;
-  color: var(--color-white);
-  font-size: 16px;
-  font-weight: 600;
+  color: var(--color-black);
+  font-size: 24px;
+  line-height: 1.17;
+  letter-spacing: 0em;
+  text-align: center;
+  font-weight: 400;
 }
 
 .active {
-  border-bottom: 2px solid var(--color-white);
+  color: var(--color-blue);
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 834px) {
   .nav {
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
     gap: 24px;
     margin-bottom: 0;
   }
   .link {
-    font-size: 12px;
+    font-size: 14px;
+    line-height: 1.43;
   }
-  
 }
 @media screen and (min-width: 1440px) {
-  .nav {
-    gap: 32px;
+  .link {
+    font-size: 18px;
+    line-height: 1.33;
   }
 }

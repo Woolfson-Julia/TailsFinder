@@ -185,7 +185,7 @@ section {
 }
 
 /* Адаптивність */
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 834px) {
   .title {
     font-size: 2rem;
   }

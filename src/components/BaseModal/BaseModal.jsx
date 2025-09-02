@@ -5,11 +5,11 @@ import {
   selectModalType,
 } from "../../redux/modal/selectors.js";
 import { closeModal } from "../../redux/modal/slice.js";
-import IconButton from "../IconButton/IconButton.jsx";
 import css from "./BaseModal.module.css";
 import NotAuthModalActions from "../NotAuthModalActions/NotAuthModalActions.jsx";
 import LogoutModalActions from "../LogoutModalActions/LogoutModalActions.jsx";
-import SavedModalActions from "../SavedModalActions/SavedModalActions.jsx";
+import Button from "../Button/Button.jsx";
+
 
 const customStyles = {
   overlay: {
@@ -57,13 +57,6 @@ export default function BaseModal() {
       content = <LogoutModalActions />;
       break;
 
-    case "saved":
-      title = "Done! Recipe saved";
-      message = "You can find recipe in your profile";
-      content = <SavedModalActions />;
-      additionalClass = css.savedContent;
-      break;
-
     default:
       return null;
   }
@@ -76,7 +69,7 @@ export default function BaseModal() {
       contentLabel={title}
     >
       <div className={`${css.modalContent} ${additionalClass}`}>
-        <IconButton
+        <Button
           onClick={handleClose}
           className={css.closeBtn}
           aria-label="Close modal"
@@ -85,7 +78,7 @@ export default function BaseModal() {
           <svg className={css.icon} width="24" height="24">
             <use href="/sprite.svg#icon-close-24px" />
           </svg>
-        </IconButton>
+        </Button>
 
         {title && <h2 className={css.title}>{title}</h2>}
         {message && <p className={css.message}>{message}</p>}

@@ -16,7 +16,7 @@
   background-color: #c80000;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 834px) {
   .actions {
     flex-direction: row-reverse;
     gap: 27px;

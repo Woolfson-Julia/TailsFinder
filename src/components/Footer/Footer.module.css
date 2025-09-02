@@ -1,4 +1,4 @@
-.footer {
+/* .footer {
   background-color: #3d2218;
   padding-bottom: 24px;
   padding-top: 24px;
@@ -36,7 +36,7 @@
   font-weight: 600;
   font-size: 16px;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 834px) {
   .nav {
     flex-direction: row;
     gap: 32px;
@@ -49,4 +49,4 @@
     justify-content: center;
     gap: 305px;
   }
-}
+} */

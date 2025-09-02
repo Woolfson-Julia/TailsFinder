@@ -13,7 +13,6 @@ import FixedErrorMessage from "../RegistrationForm/FixedErrorMessage";
 
 import { logIn } from "../../redux/auth/operations";
 
-import IconButton from "../IconButton/IconButton";
 import Button from "../Button/Button";
 import ToastInfo from "../ToastInfo/ToastInfo";
 
@@ -77,12 +76,10 @@ export default function LoginForm() {
                     name="password"
                     placeholder="********"
                   ></Field>
-                  <IconButton
+                  <Button
                     onClick={() => setShowPassword((prev) => !prev)}
                     className={css.toggleButton}
                     type="button"
-                    variantBtn="none"
-                    variantSvg="none"
                   >
                     <svg className={css.eyeSvg}>
                       {showPassword ? (
@@ -91,7 +88,7 @@ export default function LoginForm() {
                         <use xlinkHref="/sprite.svg#icon-eye-close-24px" />
                       )}
                     </svg>
-                  </IconButton>
+                  </Button>
                 </div>
 
                 <FixedErrorMessage

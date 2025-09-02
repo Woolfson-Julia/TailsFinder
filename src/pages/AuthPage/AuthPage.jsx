@@ -4,7 +4,6 @@ import css from "./AuthPage.module.css";
 
 import LoginForm from "../../components/LoginForm/LoginForm";
 import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
-// import NotFound from "../../components/NotFound";
 
 export default function AuthPage() {
   const { authType } = useParams();
@@ -16,7 +15,6 @@ export default function AuthPage() {
     <>
       {authType === "login" && <LoginForm />}
       {authType === "register" && <RegistrationForm />}
-      {/* {authType !== "login" && authType !== "register" && <NotFound />} */}
     </>
   );
 }

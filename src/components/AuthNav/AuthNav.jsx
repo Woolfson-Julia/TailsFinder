@@ -13,14 +13,14 @@ export default function AuthNav({ onLinkClick }) {
         }
         to="/auth/login"
       >
-        Log in
+        Увійти
       </NavLink>
       <NavLink
         className={css.registerBtn}
         onClick={onLinkClick}
         to="/auth/register"
       >
-        Register
+        Зареєструватися
       </NavLink>
     </div>
   );

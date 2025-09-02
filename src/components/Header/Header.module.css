@@ -1,35 +1,35 @@
 .header {
   position: relative;
-  background-color: #3d2218; /* var(--Darck-brown) */
-  min-height: 74px;
-  padding: 16px 0;
+  background-color: var(--color-bg);
+  min-height: 68px;
+  padding: 18px 0;
 }
 
 .wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 7px 10px;
 }
 
 .btnSvg {
-  border: none;
   background-color: transparent;
   padding: 0;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .icon {
-  width: 32px;
-  height: 32px;
-  stroke: var(--color-white);
+fill: var(--color-black);
 }
 
 .desktopTabletNav {
   display: flex;
-  gap: 32px;
+  gap: 56.5px;
   align-items: center;
+}
+
+
+@media screen and (min-width: 1440px) {
+  .desktopTabletNav {
+    gap: 252.5px;
+  }
 }

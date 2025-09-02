@@ -1,14 +1,10 @@
 import css from "./Footer.module.css";
-import { NavLink, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import { NavLink} from "react-router-dom";
+
 import Logo from "../Logo/Logo";
 
 export default function Footer() {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  const location = useLocation();
 
-  const isAuthPage = location.pathname.startsWith("/auth");
 
   return (
     <footer className={css.footer}>
@@ -17,20 +13,19 @@ export default function Footer() {
           <Logo className={css.logo} />
 
           <p className={css.copy}>
-            © 2025 CookingCompanion. All rights reserved.
+            © 2025 All rights reserved.
           </p>
-
+          <p>Швидка навігація</p>
           <nav className={css.nav}>
             <NavLink to="/" className={css.link}>
-              Recipes
+              Про нас
             </NavLink>
-
-            {/* Рендеримо "Account" тільки, якщо користувач НЕ залогінений і НЕ на сторінці логіну/реєстрації */}
-            {!isLoggedIn && !isAuthPage && (
-              <NavLink to="/auth/login" className={css.link}>
-                Account
-              </NavLink>
-            )}
+            <NavLink to="ads" className={css.link}>
+              Їх шукають
+            </NavLink>
+            <NavLink to="contacts" className={css.link}>
+              Контакти
+            </NavLink>
           </nav>
         </div>
       </div>

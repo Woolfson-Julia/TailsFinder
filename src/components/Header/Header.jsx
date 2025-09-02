@@ -3,12 +3,12 @@ import { useMediaQuery } from "../../hooks/useMediaQuery.js";
 import Logo from "../Logo/Logo.jsx";
 import NavPanel from "../NavPanel/NavPanel.jsx";
 import MobileMenu from "../MobileMenu/MobileMenu.jsx";
-import IconButton from "../IconButton/IconButton.jsx";
 import css from "./Header.module.css";
+import Button from "../Button/Button.jsx";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const isMobile = useMediaQuery("(max-width: 767.98px)");
+  const isMobile = useMediaQuery("(max-width: 833.98px)");
 
   const openMobileMenu = () => setIsMobileMenuOpen(true);
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
@@ -24,18 +24,16 @@ export default function Header() {
           <Logo />
 
           {isMobile ? (
-            <IconButton
+            <Button
               onClick={openMobileMenu}
               className={css.btnSvg}
-              variantBtn="none"
-              variantSvg="none"
               type="button"
               aria-label="Open mobile menu"
             >
-              <svg className={css.icon} width="32" height="32">
-                <use href="/sprite.svg#icon-burger-24px" />
+              <svg className={css.icon} width="36" height="26">
+                <use href="/sprite.svg#icon-burger" />
               </svg>
-            </IconButton>
+            </Button>
           ) : (
             <div className={css.desktopTabletNav}>
               <NavPanel />

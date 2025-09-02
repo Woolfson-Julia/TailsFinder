@@ -111,7 +111,7 @@
   /* this is on the InspectStyles but not seen on the actual example */
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 834px) {
   .container {
     padding-bottom: 262px;
   }

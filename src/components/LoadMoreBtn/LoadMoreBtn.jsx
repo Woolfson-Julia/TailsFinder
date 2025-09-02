@@ -9,7 +9,7 @@ export default function LoadMoreBtn({ onClick }) {
         variant="darkButton"
         className={css.loadMoreButton}
       >
-        Load More
+        Показати ще
       </Button>
     </div>
   );

@@ -1,38 +1,108 @@
-🍽 Tasteorama — Recipe Sharing Web App
-RecipeHub is a full-featured web application where users can:
+# 🐾 TailsFinder
 
-📖 Browse a variety of recipes
+**TailsFinder** — веб-додаток, який допомагає людям знаходити загублених або знайдених тварин.
+Мета проєкту — об'єднати власників, волонтерів та небайдужих людей, щоб швидше повертати улюбленців додому.
 
-➕ Add and manage their own recipes
+---
 
-🔍 Search by title and filter by category or ingredients
+## 🚀 Основний функціонал (MVP)
 
-❤️ Save favorite recipes
+* Розміщення оголошень про **загублену тварину**.
+* Розміщення оголошень про **знайдену тварину**.
+* Перегляд стрічки оголошень (з пошуком/фільтрацією).
+* Push-нотифікація при збігах (коли хтось знаходить схожу тварину)
+* Зручна мобільна версія (**PWA** — можна встановити як застосунок на телефон).
 
-👤 Register and log in for a personalized experience
+---
 
-🚀 Built With
-React + Vite — fast development and modern tooling
+## 🛠️ Стек технологій
 
-React Router — client-side routing
+* **Фронтенд**: React + React Router + Redux Toolkit
+* **Стилизация**: CSS Modules
+* **Бекенд**: Node.js (Express) + MongoDB (Mongoose)
+* **Авторизаці**: JWT (JSON Web Token)
+* **PWA**: Service Worker, Web Push, Manifest.json
+* **Інші інструменти**: Git, npm, ESLint/Prettier
 
-MongoDB — backend and database
+---
 
-CSS Modules / SCSS  — styling
+## 📂 Структура проєкту (попередня)
 
-Optional: Formik + Yup, React Hook Form, Axios, etc.
+```
+TailsFinder/
+├── client/               # фронтенд (React)
+│   ├── public/           # статичні файли, manifest.json
+│   └── src/
+│       ├── components/   # UI-компоненти
+│       ├── pages/        # сторінки (Home, Lost, Found, AddPet, Auth)
+│       ├── store/        # Redux store
+│       ├── services/     # API-запити
+│       └── App.jsx
+│
+├── server/               # бекенд (Express)
+    ├── constants/        # Константи (enum'и, статуси, повідомлення про помилки)
+    ├── controllers/      # Логіка обробки HTTP-запитів (advertsController, userController тощо)
+    ├── db/               # Підключення до бази даних (MongoDB, Mongoose)
+    ├── middlewares/      # Middleware (авторизація, обробка помилок, валідація токенів)
+    ├── models/           # Mongoose-схеми (User, Advert, Notification)
+    ├── routers/          # REST API маршрути (advertsRouter, authRouter)
+    ├── services/         # Бізнес-логіка (робота з БД, фільтрами, пошуком)
+    ├── utils/            # Допоміжні функції (форматування, генерація токенів тощо)
+    ├── validation/       # Joi / Yup схеми для валідації запитів
+    │
+    ├── index.js          # Точка входу (імпорт серверного застосунку)
+    └── server.js         # Ініціалізація Express-застосунку
+│
+├── README.md
+└── package.json
+```
 
-🔧 Features
-User authentication and registration
+---
 
-Create, edit, and delete personal recipes
+## ⚙️ Інструкція для запуску
 
-View detailed recipe pages
+### 1. Клонування репозиторію
 
-Search and filter functionality
+```bash
+git clone https://github.com/Woolfson-Julia/TailsFinder.git
+cd TailsFinder
+```
 
-Search recipes by title
+### 2. Встановлення залежностей
 
-Add to favorites (for logged-in users)
+Фронтенд:
 
-Responsive design for mobile, tablet and desktop
+```bash
+cd client
+npm install
+```
+
+Бекенд:
+
+```bash
+cd server
+npm install
+```
+
+### 3. Запуск у режимі розробки
+
+Фронтенд:
+
+```bash
+npm start
+```
+
+Бекенд:
+
+```bash
+npm run dev
+```
+
+---
+
+## 🔮 Подальші плани
+
+* Інтеграція AI («Shazam для тварин» 🐶)
+
+---
+

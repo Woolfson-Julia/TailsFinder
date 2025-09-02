@@ -1,0 +1,11 @@
+/* .list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+@media screen and (min-width: 834px) {
+    .list {
+        flex-direction: row;
+        flex-wrap: wrap;
+    } } */

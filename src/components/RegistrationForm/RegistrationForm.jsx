@@ -11,7 +11,7 @@ import { validationSchema } from "./validationSchema";
 import { register } from "../../redux/auth/operations";
 import FixedErrorMessage from "../RegistrationForm/FixedErrorMessage";
 
-import IconButton from "../IconButton/IconButton";
+
 import Button from "../Button/Button";
 import ToastInfo from "../ToastInfo/ToastInfo";
 import Loader from "../Loader/Loader";
@@ -110,11 +110,9 @@ export default function RegistrationForm() {
                     name="password"
                     placeholder="********"
                   ></Field>
-                  <IconButton
+                  <Button
                     onClick={() => setShowPassword((prev) => !prev)}
                     className={css.toggleButton}
-                    variantBtn="none"
-                    variantSvg="none"
                   >
                     <svg className={css.eyeSvg}>
                       {showPassword ? (
@@ -123,7 +121,7 @@ export default function RegistrationForm() {
                         <use xlinkHref="/sprite.svg#icon-eye-close-24px" />
                       )}
                     </svg>
-                  </IconButton>
+                  </Button>
                 </div>
                 <FixedErrorMessage
                   name="password"
@@ -144,11 +142,9 @@ export default function RegistrationForm() {
                     name="checkPassword"
                     placeholder="********"
                   ></Field>
-                  <IconButton
+                  <Button
                     onClick={() => setShowCheckPassword((prev) => !prev)}
                     className={css.toggleButton}
-                    variantBtn="none"
-                    variantSvg="none"
                   >
                     <svg className={css.eyeSvg}>
                       {showCheckPassword ? (
@@ -157,7 +153,7 @@ export default function RegistrationForm() {
                         <use xlinkHref="/sprite.svg#icon-eye-close-24px" />
                       )}
                     </svg>
-                  </IconButton>
+                  </Button>
                 </div>
 
                 <FixedErrorMessage

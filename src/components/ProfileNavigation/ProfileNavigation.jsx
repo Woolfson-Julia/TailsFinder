@@ -12,13 +12,12 @@ export default function ProfileNavigation() {
   
   return (
     <nav className={css.nav}>
-      <NavLink className={buildLinkClass}  to="/profile/own">
-        My Recipes
+      <NavLink className={buildLinkClass} to="/profile/own">
+        Оголошення
       </NavLink>
-      
-        <NavLink className={buildLinkClass}  to="/profile/favorites">
-          Saved Recipes
-        </NavLink>
+      <NavLink className={buildLinkClass} to="/profile/data">
+        Особисті дані
+      </NavLink>
     </nav>
   );
 }

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import Logo from "../Logo/Logo.jsx";
-import IconButton from "../IconButton/IconButton.jsx";
 import NavPanel from "../NavPanel/NavPanel.jsx";
 import css from "./MobileMenu.module.css";
+import Button from "../Button/Button.jsx";
 
 export default function MobileMenu({ onClose }) {
   useEffect(() => {
@@ -23,10 +23,8 @@ export default function MobileMenu({ onClose }) {
         <div className="container">
           <div className={css.topBar}>
             <Logo />
-            <IconButton
+            <Button
               onClick={onClose}
-              variantBtn="none"
-              variantSvg="none"
               className={css.btnSvg}
               type="button"
               aria-label="Close mobile menu"
@@ -34,7 +32,7 @@ export default function MobileMenu({ onClose }) {
               <svg className={css.icon} width="32" height="32">
                 <use href="/sprite.svg#icon-close" />
               </svg>
-            </IconButton>
+            </Button>
           </div>
 
           <NavPanel onLinkClick={onClose} />

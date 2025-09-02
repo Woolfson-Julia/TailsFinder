@@ -1,8 +1,8 @@
 .button {
-  border-radius: 8px;
-  border:none;
-  font-weight: 600;
-  font-size: 16px;
+  border-radius: 40px;
+  border: none;
+  font-weight: 400;
+  font-size: 13px;
   transition: all .25s cubic-bezier(.4,0,.2,1);
 }
 .button:focus {
@@ -15,48 +15,46 @@
 
 /* Варианты */
 .darkButton {
-  background: var(--color-brown-500);
+  background: var(--color-blue);
   color: var(--color-white);
 }
 
 .darkButton:hover {
-  background: var(--color-brown-700);
+  background: var(--color-btn-dark-blue);
 }
 
 .darkButton:focus {
-  background: var(--color-brown-500);
+  background: var(--color-btn-dark-blue);
   box-shadow: 0 4px 10px #0000004d;
 }
 
 .darkButton:disabled {
-  background: var(--color-brown-500);
+  background: var(--color-text);
   box-shadow: 0 4px 10px #0000004d;
 }
 
 
 .lightButton {
-  border: 1px solid var(--color-black);
-  color: var(--color-black);
+  border: 2px solid var(--color-blue);
+  color: var(--color-blue);
   background: transparent;
 }
 
 .lightButton:hover {
-  background: var(--color-brown-700);
-  border-color: var(--color-brown-700);
+  background-color: var(--color-blue);
   color: var(--color-white);
 }
 
 .lightButton:focus {
-  background: var(--color-brown-500);
+  background-color: var(--color-blue);
   color: var(--color-white);
-  border-color: var(--color-brown-700);
   box-shadow: 0 4px 10px #0000004d;
 }
 
 .lightButton:disabled {
-  background:  var(--color-brown-500);
-  color: var(--color-white);
-  border-color: var(--color-brown-700);
+  background-color: var(--color-white);
+  border: 2px solid var(--color-text);
+  color: var(--color-text);
   box-shadow:0 4px 10px #0000004d;
 }
 

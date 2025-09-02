@@ -14,7 +14,7 @@ export default function Loader() {
         padding: 2,
       }}
     >
-      <CircularProgress sx={{ color: "#3d2218" }} />
+      <CircularProgress sx={{ color: "#5b5aff" }} />
     </Box>
   );
 }
