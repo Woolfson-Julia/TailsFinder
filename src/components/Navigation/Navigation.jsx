@@ -21,9 +21,6 @@ export default function Navigation({ onLinkClick }) {
       <NavLink className={buildLinkClass} onClick={onLinkClick} to="/ads">
         Їх шукають
       </NavLink>
-      <NavLink className={buildLinkClass} onClick={onLinkClick} to="/contacts">
-        Контакти
-      </NavLink>
     </nav>
   );
 }

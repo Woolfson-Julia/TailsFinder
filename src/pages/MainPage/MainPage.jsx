@@ -9,6 +9,7 @@ import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import hero from "../../assets/hero@1x.png";
 import hero2 from "../../assets/hero@2x.png";
 import Info from "../../components/Info/Info";
+import HowItWork from "../../components/HowItWork/HowItWork";
 import Button from "../../components/Button/Button";
 
 export default function MainPage() {
@@ -56,7 +57,8 @@ export default function MainPage() {
           </div>
         </div>
       </div>
-      <Info/>
+      <Info />
+      <HowItWork />
     </>
   );
 }

@@ -57,14 +57,14 @@
   margin-bottom: 60px;
 }
 .primaryButton {
-  display: block;
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--color-blue);
   color: var(--color-white);
-  text-align: center;
   border-radius: 40px;
-  padding: 12px 20px;
-  width: 190px;
+  width: 238px;
+  height: 40px;
   font-weight: 400;
   font-size: 13px;
   line-height: 1.23;
@@ -94,8 +94,13 @@
   .description {
     font-size: 18px;
   }
+  .primaryButton {
+    font-size: 16px;
+    line-height: 1.5;
+    width: 312px;
+    height: 56px;
+  }
 }
-
 
 @media screen and (min-width: 1440px) {
   .title {
@@ -112,12 +117,5 @@
   }
   .description {
     font-size: 20px;
-  }
-  .primaryButton {
-    padding: 16px 30px;
-    width: 210px;
-    height: 56px;
-    font-size: 16px;
-    line-height: 1.5;
   }
 }

@@ -27,6 +27,7 @@ export default function Header() {
             <Button
               onClick={openMobileMenu}
               className={css.btnSvg}
+              variant="none"
               type="button"
               aria-label="Open mobile menu"
             >
