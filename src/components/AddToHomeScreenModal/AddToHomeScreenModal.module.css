@@ -1,0 +1,143 @@
+.openBtn {
+  background: var(--color-blue);
+  color: var(--color-white);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal {
+  background: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+.title {
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1.08;
+  margin-bottom: 12px;
+  color: var(--color-black);
+  text-align: center;
+}
+.text {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.33;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: 16px;
+}
+.menuIcon {
+  font-size: 20px;
+}
+.titleInstructions {
+  font-size: 18px;
+  line-height: 1.08;
+  color: var(--color-blue);
+  margin-bottom: 12px;
+}
+.instructions {
+  margin-bottom: 20px;
+}
+.instructions ol {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+.item {
+  color: var(--color-black);
+  list-style-type: style;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.39;
+  margin-bottom: 10px;
+}
+.closeBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-blue);
+  color: var(--color-white);
+  border-radius: 40px;
+  width: 161px;
+  height: 40px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.23;
+  letter-spacing: -0.02em;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.closeBtn:hover,
+.closeBtn:focus {
+  background-color: var(--color-btn-dark-blue);
+}
+
+@media screen and (min-width: 834px) {
+  .modal {
+  max-width: 600px;
+}
+.title {
+  font-size: 30px;
+  margin-bottom: 16px;
+}
+.text {
+  font-size: 20px;
+}
+.titleInstructions {
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+.instructions {
+  margin-bottom: 22px;
+}
+.item {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+.closeBtn {
+  width: 200px;
+  height: 44px;
+  font-size: 18px;
+}
+}
+
+@media screen and (min-width: 1440px) {
+  .modal {
+  max-width: 800px;
+}
+.title {
+  font-size: 34px;
+}
+.text {
+  font-size: 22px;
+}
+.titleInstructions {
+  font-size: 24px;
+}
+.item {
+  font-size: 20px;
+}
+.closeBtn {
+  width: 240px;
+  height: 48px;
+  font-size: 20px;
+}
+}
