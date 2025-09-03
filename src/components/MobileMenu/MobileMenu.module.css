@@ -9,21 +9,22 @@
 }
 
 .wrapper {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  max-height: 100vh;
-  background-color: #3d2218;
+  height: 100vh;
+  backdrop-filter: blur(4px);
+  background: var(--color-white);
   z-index: 999;
-  padding: 16px 0 40px 0;
+  padding: 17px 0 0 0;
 }
 
 .topBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 32px;
+  margin-bottom: 140px;
 }
 
 .btnSvg {
@@ -35,7 +36,5 @@
 }
 
 .icon {
-  width: 32px;
-  height: 32px;
-  stroke: var(--color-white);
+  fill: var(--color-black);
 }

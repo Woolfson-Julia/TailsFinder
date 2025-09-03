@@ -1,3 +1,37 @@
+.footer {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+}
+.icon {
+  fill: var(--color-white);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.iconInstagram {
+  stroke: var(--color-white);
+}
+
+.link {
+  color: var(--color-white);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.link:hover,
+.link:focus {
+  color: var(--color-btn-dark-blue);
+}
+.active {
+  color: var(--color-btn-dark-blue);
+}
+
+
+@media screen and (min-width: 834px) {
+
+}
+@media screen and (min-width: 1440px) {
+
+}
+
+
+
 /* .footer {
   background-color: #3d2218;
   padding-bottom: 24px;

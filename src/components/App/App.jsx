@@ -17,7 +17,6 @@ const NotFoundPage = lazy(() =>
 );
 const MainPage = lazy(() => import("../../pages/MainPage/MainPage"));
 const LookForPage = lazy(() => import("../../pages/LookForPage/LookForPage"));
-const Contacts = lazy(() => import("../../pages/Contacts/Contacts"));
 const ProfilePage = lazy(() => import("../../pages/ProfilePage/ProfilePage"));
 const AdViewPage = lazy(() => import("../../pages/AdViewPage/AdViewPage"));
 
@@ -43,7 +42,6 @@ export default function App() {
           <Route index element={<MainPage />} />
           <Route path="ads" element={<LookForPage />} />
           <Route path="ads/:id" element={<AdViewPage />} />
-          <Route path="contacts" element={<Contacts />} />
 
           <Route path="profile" element={<ProfilePage />}>
             <Route path="own" element={<MyAds />} />

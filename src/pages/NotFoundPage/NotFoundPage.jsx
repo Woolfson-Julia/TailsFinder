@@ -14,16 +14,15 @@ export default function NotFoundPage() {
 
           <div className={css.errorCode}>404</div>
 
-          <h2 className={css.subtitle}>Page not found!</h2>
+          <h2 className={css.subtitle}>Сторінка не знайдена!</h2>
           <p className={css.description}>
-            Sorry, an error has occurred. The page you are looking for does not
-            exist or has been moved. The link may be outdated or incorrectly
-            typed.
+            Ой! Такої сторінки немає. Перевірте адресу або поверніться на
+            головну.
           </p>
 
           <div className={css.actions}>
             <Link to="/" className={css.primaryButton}>
-              Go home
+              Повернутися на головну
             </Link>
           </div>
         </div>
