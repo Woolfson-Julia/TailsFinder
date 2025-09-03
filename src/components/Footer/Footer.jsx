@@ -6,6 +6,7 @@ import logoMobile1x from "../../assets/logo-footer-mobile@1x.png";
 import logoTabletDesktop1x from "../../assets/logo-footer-tablet-desktop@1x.png";
 import logoMobile2x from "../../assets/logo-footer-mobile@2x.png";
 import logoTabletDesktop2x from "../../assets/logo-footer-tablet-desktop@2x.png";
+import AddToHomeScreenModal from "../AddToHomeScreenModal/AddToHomeScreenModal";
 
 export default function Footer() {
   const buildLinkClass = ({ isActive }) => {
@@ -39,6 +40,7 @@ export default function Footer() {
             <a href="tel:+3800671234567">+38 (067) 123-45-67</a>
           </p>
         </address>
+        <AddToHomeScreenModal />
         <div className={css.containerNavMedia}>
           <p className={css.titleNav}>Швидка навігація</p>
           <nav className={css.nav}>
