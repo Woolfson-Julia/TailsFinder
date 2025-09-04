@@ -1,6 +1,9 @@
 .footer {
   background-color: var(--color-blue);
   color: var(--color-white);
+  padding-bottom: 24px;
+  padding-top: 24px;
+  min-width: 320px;
 }
 .icon {
   fill: var(--color-white);
@@ -13,24 +16,85 @@
 .link {
   color: var(--color-white);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.38462;
+  color: var(--color-white);
 }
 .link:hover,
 .link:focus {
   color: var(--color-btn-dark-blue);
 }
-.active {
+/* .active {
   color: var(--color-btn-dark-blue);
+} */
+.img {
+  width: 174px;
+  height: 154px;
+  margin-bottom: 24px;
 }
-
-
+h2 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-white);
+  margin-bottom: 12px;
+}
+address {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.iconContact {
+  fill: var(--color-white);
+}
+.iconLocation {
+  fill: var(--color-blue);
+  stroke: var(--color-white);
+}
+.contactItem {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.38462;
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.titleNav {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-white);
+  margin-bottom: 12px;
+  min-width: 172px;
+}
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.containerNavMedia {
+  display: flex;
+  gap: 24px;
+}
+.containerSocial {
+  max-width: 173px;
+}
+.titleMedia {
+  width: 100%;
+}
+.containerSocialMedia {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+}
 @media screen and (min-width: 834px) {
-
 }
 @media screen and (min-width: 1440px) {
-
 }
-
-
 
 /* .footer {
   background-color: #3d2218;
