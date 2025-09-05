@@ -1,11 +1,16 @@
-/* .list {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 48px;
+  margin-bottom: 24px;
 }
 
 @media screen and (min-width: 834px) {
-    .list {
-        flex-direction: row;
-        flex-wrap: wrap;
-    } } */
+  .list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 48px;
+  }
+}

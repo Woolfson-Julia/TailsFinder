@@ -1,11 +1,25 @@
 import css from "./AdsList.module.css";
 
+import { selectAdvertsLatest } from "../../redux/adverts/selectors";
+import { fetchLatestAdverts } from "../../redux/adverts/operations";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function AdsList() { 
+import AdCard from "../AdCard/AdCard.jsx";
+
+export default function AdsList() {
+  const adverts = useSelector(selectAdvertsLatest);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchLatestAdverts());
+  }, [dispatch]);
 
   return (
     <ul className={css.list}>
-      {/* Map through your ads data and render each ad item */}
+      {adverts.map((ad) => (
+        <AdCard key={ad._id} advert={ad} />
+      ))}
     </ul>
   );
 }
@@ -56,7 +70,6 @@ export default function AdsList() {
 
 //   const prevLengthRef = useRef(0);
 
-
 //   const handleLoadMore = () => {
 //     setPage((prev) => prev + 1);
 //   };
@@ -85,7 +98,6 @@ export default function AdsList() {
 //       );
 //     }
 //   }, [dispatch, searchValue, categoryValue, ingredientValue, isLoggedIn, page]);
-
 
 //   const newItemRef = useRef(null);
 
