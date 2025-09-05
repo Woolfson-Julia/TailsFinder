@@ -30,42 +30,44 @@ export default function Footer() {
             />
           </picture>
         </a>
-        <h2>Контакти</h2>
-        <address>
-          <p className={css.contactItem}>
-            <svg
-              className={css.iconContact}
-              width="24"
-              height="24"
-              aria-label="icon Person"
-            >
-              <use href="/sprite.svg#icon-person"></use>
-            </svg>
-            <a href="mailto:support@petsafe.ua">support@tailsfinder.ua</a>
-          </p>
-          <p className={css.contactItem}>
-            <svg
-              className={css.iconLocation}
-              width="24"
-              height="24"
-              aria-label="icon Location"
-            >
-              <use href="/sprite.svg#icon-location"></use>
-            </svg>
-            м. Київ, вул. Добрих Сердець, 12
-          </p>
-          <p className={css.contactItem}>
-            <svg
-              className={css.iconContact}
-              width="24"
-              height="24"
-              aria-label="icon Call"
-            >
-              <use href="/sprite.svg#icon-call"></use>
-            </svg>
-            <a href="tel:+3800671234567">+38 (067) 123-45-67</a>
-          </p>
-        </address>
+        <div className={css.containerContact}>
+          <h2>Контакти</h2>
+          <address>
+            <p className={css.contactItem}>
+              <svg
+                className={css.iconContact}
+                width="24"
+                height="24"
+                aria-label="icon Person"
+              >
+                <use href="/sprite.svg#icon-person"></use>
+              </svg>
+              <a href="mailto:support@petsafe.ua">support@tailsfinder.ua</a>
+            </p>
+            <p className={css.contactItem}>
+              <svg
+                className={css.iconLocation}
+                width="24"
+                height="24"
+                aria-label="icon Location"
+              >
+                <use href="/sprite.svg#icon-location"></use>
+              </svg>
+              м. Київ, вул. Добрих Сердець, 12
+            </p>
+            <p className={css.contactItem}>
+              <svg
+                className={css.iconContact}
+                width="24"
+                height="24"
+                aria-label="icon Call"
+              >
+                <use href="/sprite.svg#icon-call"></use>
+              </svg>
+              <a href="tel:+3800671234567">+38 (067) 123-45-67</a>
+            </p>
+          </address>
+        </div>
         <div className={css.containerNavMedia}>
           <div className={css.containerNavigation}>
             <p className={css.titleNav}>Швидка навігація</p>

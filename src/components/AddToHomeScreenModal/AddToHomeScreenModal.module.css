@@ -8,6 +8,11 @@
   justify-self: start;
   padding: 0;
   text-align: start;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.openBtn:hover,
+.openBtn:focus {
+  color: var(--color-btn-dark-blue);
 }
 
 .backdrop {
@@ -140,5 +145,8 @@
     width: 240px;
     height: 48px;
     font-size: 20px;
+  }
+  .openBtn {
+    display: none;
   }
 }
