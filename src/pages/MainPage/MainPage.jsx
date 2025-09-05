@@ -11,6 +11,7 @@ import hero2 from "../../assets/hero@2x.png";
 import Info from "../../components/Info/Info";
 import HowItWork from "../../components/HowItWork/HowItWork";
 import Button from "../../components/Button/Button";
+import LookFor from "../../components/LookFor/LookFor";
 
 export default function MainPage() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -58,6 +59,7 @@ export default function MainPage() {
         </div>
       </div>
       <Info />
+      <LookFor />
       <HowItWork />
     </>
   );
