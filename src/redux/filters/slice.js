@@ -1,58 +1,56 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCategories, fetchIngredients } from "./operations";
+import { fetchFilters } from "./operations";
 
 const slice = createSlice({
   name: "filters",
   initialState: {
-    recipe: "",
-    category: "",
-    ingredient: "",
-    categories: [],
-    ingredients: [],
+    selectedCity: "",
+    selectedDistrict: "",
+    selectedSpecies: "",
+    selectedStatus: "",
+    cities: [],
+    districts: [],
+    species: [],
+    statuses: [],
     loading: false,
     error: null,
   },
   reducers: {
-    changeFilter: (state, action) => {
-      state.recipe = action.payload;
+    changeSelectedCityFilter: (state, action) => {
+      state.selectedCity = action.payload;
     },
-    changeCategoryFilter: (state, action) => {
-      state.category = action.payload;
+    changeSelectedDistrictFilter: (state, action) => {
+      state.selectedDistrict = action.payload;
     },
-    changeIngredientFilter: (state, action) => {
-      state.ingredient = action.payload;
+    changeSelectedSpeciesFilter: (state, action) => {
+      state.selectedSpecies = action.payload;
+    },
+    changeSelectedStatusFilter: (state, action) => {
+      state.selectedStatus = action.payload;
     },
     resetFilters: (state) => {
-      state.recipe = "";
-      state.category = "";
-      state.ingredient = "";
+      state.selectedCity = "";
+      state.selectedDistrict = "";
+      state.selectedSpecies = "";
+      state.selectedStatus = "";
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchCategories.pending, (state) => {
+      .addCase(fetchFilters.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchCategories.fulfilled, (state, action) => {
+      .addCase(fetchFilters.fulfilled, (state, action) => {
         state.loading = false;
-        state.categories = action.payload;
+        state.cities = action.payload.cities;
+        state.districts = action.payload.districts;
+        state.species = action.payload.species;
+        state.statuses = action.payload.statuses;
       })
-      .addCase(fetchCategories.rejected, (state, action) => {
+      .addCase(fetchFilters.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
-      })
-      .addCase(fetchIngredients.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(fetchIngredients.fulfilled, (state, action) => {
-        state.loading = false;
-        state.ingredients = action.payload;
-      })
-      .addCase(fetchIngredients.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message;
+        state.error = action.payload || action.error.message;
       });
   },
 });
@@ -60,8 +58,9 @@ const slice = createSlice({
 export default slice.reducer;
 
 export const {
-  changeFilter,
-  changeCategoryFilter,
-  changeIngredientFilter,
+  changeSelectedCityFilter,
+  changeSelectedDistrictFilter,
+  changeSelectedSpeciesFilter,
+  changeSelectedStatusFilter,
   resetFilters,
 } = slice.actions;

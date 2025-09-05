@@ -12,12 +12,10 @@ import {
 import storage from "redux-persist/lib/storage";
 import filtersReducer from "./filters/slice";
 import authReducer from "./auth/slice";
-// import recipesReducer from "./recipes/slice";
-
-// import recipesListenerMiddleware from "./recipes/middlewares";
-import filtersListenerMiddleware from "./filters/middlewares";
+import advertsReducer from "./adverts/slice";
 import modalReducer from "./modal/slice.js";
-
+import filtersListenerMiddleware from "./filters/middlewares";
+import advertsListenerMiddleware from "./adverts/middlewares.js";
 
 const persistedAuthReducer = persistReducer(
   {
@@ -32,8 +30,8 @@ export const store = configureStore({
   reducer: {
     filters: filtersReducer,
     auth: persistedAuthReducer,
-    // recipes: recipesReducer,
     modal: modalReducer,
+    adverts: advertsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -41,8 +39,8 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     })
-      // .concat(recipesListenerMiddleware.middleware)
-      .concat(filtersListenerMiddleware.middleware),
+      .concat(filtersListenerMiddleware.middleware)
+      .concat(advertsListenerMiddleware.middleware),
 });
 
 export default store;

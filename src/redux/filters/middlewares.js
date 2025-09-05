@@ -1,20 +1,13 @@
 import { createListenerMiddleware } from "@reduxjs/toolkit";
-import { fetchCategories, fetchIngredients } from "./operations";
+import { fetchFilters } from "./operations";
 import toast from "react-hot-toast";
 
 const filtersListenerMiddleware = createListenerMiddleware();
 
 filtersListenerMiddleware.startListening({
-  actionCreator: fetchCategories.rejected,
+  actionCreator: fetchFilters.rejected,
   effect: async () => {
-    toast.error("Failed to load categories");
-  },
-});
-
-filtersListenerMiddleware.startListening({
-  actionCreator: fetchIngredients.rejected,
-  effect: async () => {
-    toast.error("Failed to load ingredients");
+    toast.error("Failed to load filters");
   },
 });
 
