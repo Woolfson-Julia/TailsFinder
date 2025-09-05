@@ -1,14 +1,22 @@
 import toast from "react-hot-toast";
 import { createSlice } from "@reduxjs/toolkit";
-import { logIn, logOut, refreshUser, register } from "./operations";
+import { logIn, logOut, refreshUser, register, updateUser } from "./operations";
+
+const handlePending = (state) => {
+  state.loading = true;
+  state.error = null;
+};
+
+const handleRejected = (state, action) => {
+  state.loading = false;
+  state.error = action.payload || "Something went wrong";
+  toast.error(state.error);
+};
 
 const authSlice = createSlice({
   name: "auth",
   initialState: {
-    user: {
-      name: null,
-      email: null,
-    },
+    user: null,
     accessToken: null,
     isLoggedIn: false,
     isRefreshing: false,
@@ -17,57 +25,39 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) =>
     builder
-      .addCase(register.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
+      .addCase(register.pending, handlePending)
       .addCase(register.fulfilled, (state, actions) => {
         state.user = actions.payload.user;
         state.accessToken = actions.payload.accessToken;
         state.isLoggedIn = true;
         state.loading = false;
       })
-      .addCase(register.rejected, (state, action) => {
-        state.loading = false;
-        state.error = true;
-        toast.error(
-          action.payload || "Something went wrong. Please try again."
-        );
-      })
-      .addCase(logIn.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
+      .addCase(register.rejected, handleRejected)
+      .addCase(logIn.pending, handlePending)
       .addCase(logIn.fulfilled, (state, actions) => {
         state.user = actions.payload.user;
         state.accessToken = actions.payload.accessToken;
         state.isLoggedIn = true;
         state.loading = false;
       })
-      .addCase(logIn.rejected, (state) => {
-        state.loading = false;
-        state.error = true;
-        toast.error("Invalid email or password. Try again");
-      })
-      .addCase(logOut.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
+      .addCase(logIn.rejected, handleRejected)
+      .addCase(logOut.pending, handlePending)
       .addCase(logOut.fulfilled, (state) => {
         state.loading = false;
-        state.user = { name: null, email: null };
+        state.user = null;
         state.accessToken = null;
         state.isLoggedIn = false;
       })
-      .addCase(logOut.rejected, (state) => {
+      .addCase(logOut.rejected, (state, action) => {
         state.loading = false;
-        state.user = { name: null, email: null };
+        state.user = null;
         state.accessToken = null;
         state.isLoggedIn = false;
+        state.error = action.payload;
       })
       .addCase(refreshUser.pending, (state) => {
-        state.loading = true;
         state.error = null;
+        state.loading = true;
         state.isRefreshing = true;
       })
       .addCase(refreshUser.fulfilled, (state, actions) => {
@@ -76,14 +66,24 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.loading = false;
       })
-      .addCase(refreshUser.rejected, (state) => {
+      .addCase(refreshUser.rejected, (state, action) => {
         state.isRefreshing = false;
         state.loading = false;
-        state.error = true;
+        state.error =
+          action.payload || "Something went wrong with refreshing user";
+        state.isLoggedIn = false;
+        state.accessToken = null;
         toast.error(
           "Oops! An error occurred. Please try refreshing the page or log in again."
         );
-      }),
+      })
+      .addCase(updateUser.pending, handlePending)
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.loading = false;
+        toast.success("Profile updated successfully!");
+      })
+      .addCase(updateUser.rejected, handleRejected),
 });
 
 export default authSlice.reducer;
