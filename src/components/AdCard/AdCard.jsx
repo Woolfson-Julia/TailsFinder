@@ -40,7 +40,7 @@ export default function AdCard({ advert }) {
           </li>
         </ul>
 
-        <div className={css.listContainer}>
+        <div className={css.titleContainer}>
           <h3 className={css.title}>
             {[advert.animal.species, "(", details, ")"]
               .filter(Boolean)
