@@ -1,7 +1,7 @@
 .footer {
   background-color: var(--color-blue);
   color: var(--color-white);
-  padding-bottom: 24px;
+  padding-bottom: 32px;
   padding-top: 24px;
   min-width: 320px;
   position: relative;
@@ -45,7 +45,7 @@
 }
 .title {
   font-weight: 700;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5;
   color: var(--color-white);
   margin-bottom: 12px;
@@ -66,7 +66,7 @@
 .contactItem {
   font-weight: 400;
   font-size: 13px;
-  line-height: 1.38462;
+  line-height: 1.38;
   color: var(--color-white);
   display: flex;
   align-items: center;
@@ -80,7 +80,7 @@
 }
 .titleNav {
   font-weight: 700;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5;
   color: var(--color-white);
   margin-bottom: 12px;
@@ -93,6 +93,7 @@
 }
 .containerNavMedia {
   display: flex;
+  justify-content: space-between;
   gap: 8px;
 }
 .containerSocial {
@@ -101,7 +102,7 @@
 .titleMedia {
   width: 100%;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5;
   margin-bottom: 12px;
 }
@@ -109,11 +110,25 @@
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 12px;
 }
 @media screen and (min-width: 834px) {
   .footer {
     height: 398px;
+  }
+  .title {
+    font-size: 18px;
+    line-height: 1.55;
+    letter-spacing: -0.02em;
+  }
+  .titleMedia {
+    font-size: 18px;
+    line-height: 1.55;
+    letter-spacing: -0.02em;
+  }
+  .titleNav {
+    font-size: 18px;
+    line-height: 1.55;
+    letter-spacing: -0.02em;
   }
   .containerSocial {
     position: absolute;
@@ -124,6 +139,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    max-width: max-content;
   }
 
   .linkLogo {
@@ -144,6 +160,9 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+  }
+  .address {
+    margin-bottom: 0;
   }
 }
 @media screen and (min-width: 1440px) {
@@ -180,22 +199,19 @@
     margin-right: 152px;
   }
   .contactItem {
-    font-weight: 400;
     font-size: 18px;
-    line-height: 1.55556;
+    line-height: 1.55;
     letter-spacing: -0.02em;
   }
   .title {
-    font-weight: 700;
     font-size: 18px;
     line-height: 1.56;
     letter-spacing: -0.02em;
     margin-bottom: 24px;
   }
   .link {
-    font-weight: 400;
     font-size: 18px;
-    line-height: 1.55556;
+    line-height: 1.55;
     letter-spacing: -0.02em;
   }
   .containerNavigation {
@@ -203,11 +219,9 @@
     width: 265px;
   }
   .titleNav {
-    font-weight: 700;
     font-size: 18px;
-    line-height: 1.55556;
+    line-height: 1.55;
     letter-spacing: -0.02em;
-    color: var(--color-white);
     margin-bottom: 24px;
   }
   .containerSocial {
@@ -216,11 +230,9 @@
     width: 185px;
   }
   .titleMedia {
-    font-weight: 700;
     font-size: 18px;
-    line-height: 1.55556;
+    line-height: 1.55;
     letter-spacing: -0.02em;
-    color: var(--color-white);
     width: 185px;
     margin-bottom: 24px;
   }

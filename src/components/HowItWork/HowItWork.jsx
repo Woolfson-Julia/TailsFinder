@@ -24,7 +24,7 @@ export default function Info() {
         <h2 className={css.title}>Як це працює?</h2>
         <ul className={css.list}>
           <li className={css.item}>
-            <picture>
+            <picture className={css.picture}>
               <source
                 media="(min-width: 834px)"
                 srcSet={`${firstimg1x} 1x, ${firstimg2x} 2x`}
@@ -40,7 +40,7 @@ a man is typing something on his phone"
             <p className={css.label}>Зареєструйтесь на сайті</p>
           </li>
           <li className={css.item}>
-            <picture>
+            <picture className={css.picture}>
               <source
                 media="(min-width: 834px)"
                 srcSet={`${secondimg1x} 1x, ${secondimg2x} 2x`}
@@ -57,7 +57,7 @@ laptop and search bar"
             <p className={css.label}>Знайдіть або додайте оголошення</p>
           </li>
           <li className={css.item}>
-            <picture>
+            <picture className={css.picture}>
               <source
                 media="(min-width: 834px)"
                 srcSet={`${thirdimg1x} 1x, ${thirdimg2x} 2x`}
@@ -75,7 +75,7 @@ girl holds a cat in her arms"
             </p>
           </li>
           <li className={css.item}>
-            <picture>
+            <picture className={css.picture}>
               <source
                 media="(min-width: 834px)"
                 srcSet={`${fourthimg1x} 1x, ${fourthimg2x} 2x`}
