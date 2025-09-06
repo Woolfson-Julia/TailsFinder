@@ -1,11 +1,18 @@
 .openBtn {
-  background: var(--color-blue);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.38462;
   color: var(--color-white);
-  border: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
+  background-color: var(--color-blue);
+  display: flex;
+  justify-self: start;
+  padding: 0;
+  text-align: start;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.openBtn:hover,
+.openBtn:focus {
+  color: var(--color-btn-dark-blue);
 }
 
 .backdrop {
@@ -36,7 +43,6 @@
   line-height: 1.08;
   margin-bottom: 12px;
   color: var(--color-black);
-  text-align: center;
 }
 .text {
   font-weight: 400;
@@ -92,52 +98,55 @@
 
 @media screen and (min-width: 834px) {
   .modal {
-  max-width: 600px;
-}
-.title {
-  font-size: 30px;
-  margin-bottom: 16px;
-}
-.text {
-  font-size: 20px;
-}
-.titleInstructions {
-  font-size: 22px;
-  margin-bottom: 16px;
-}
-.instructions {
-  margin-bottom: 22px;
-}
-.item {
-  font-size: 18px;
-  margin-bottom: 16px;
-}
-.closeBtn {
-  width: 200px;
-  height: 44px;
-  font-size: 18px;
-}
+    max-width: 600px;
+  }
+  .title {
+    font-size: 30px;
+    margin-bottom: 16px;
+  }
+  .text {
+    font-size: 20px;
+  }
+  .titleInstructions {
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+  .instructions {
+    margin-bottom: 22px;
+  }
+  .item {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  .closeBtn {
+    width: 200px;
+    height: 44px;
+    font-size: 18px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
   .modal {
-  max-width: 800px;
-}
-.title {
-  font-size: 34px;
-}
-.text {
-  font-size: 22px;
-}
-.titleInstructions {
-  font-size: 24px;
-}
-.item {
-  font-size: 20px;
-}
-.closeBtn {
-  width: 240px;
-  height: 48px;
-  font-size: 20px;
-}
+    max-width: 800px;
+  }
+  .title {
+    font-size: 34px;
+  }
+  .text {
+    font-size: 22px;
+  }
+  .titleInstructions {
+    font-size: 24px;
+  }
+  .item {
+    font-size: 20px;
+  }
+  .closeBtn {
+    width: 240px;
+    height: 48px;
+    font-size: 20px;
+  }
+  .openBtn {
+    display: none;
+  }
 }
