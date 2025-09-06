@@ -17,19 +17,19 @@
   backdrop-filter: blur(4px);
   background: var(--color-white);
   z-index: 999;
-  padding: 17px 0 0 0;
+  padding: 25px 0 0 0;
 }
 
 .topBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 140px;
+  margin-bottom: 160px;
 }
 
 .btnSvg {
   background-color: transparent;
-  padding: 0;
+  padding: 0 10px;
   display: flex;
   align-items: center;
   justify-content: center;
