@@ -31,8 +31,8 @@ export default function Footer() {
           </picture>
         </a>
         <div className={css.containerContact}>
-          <h2>Контакти</h2>
-          <address>
+          <h3 className={css.title}>Контакти</h3>
+          <address className={css.address}>
             <p className={css.contactItem}>
               <svg
                 className={css.iconContact}
@@ -70,7 +70,7 @@ export default function Footer() {
         </div>
         <div className={css.containerNavMedia}>
           <div className={css.containerNavigation}>
-            <p className={css.titleNav}>Швидка навігація</p>
+            <h3 className={css.titleNav}>Швидка навігація</h3>
             <nav className={css.nav}>
               <NavLink to="/" className={buildLinkClass}>
                 Про нас
@@ -83,7 +83,7 @@ export default function Footer() {
             </nav>
           </div>
           <div className={css.containerSocial}>
-            <p className={css.titleMedia}>Соціальні мережі:</p>
+            <h3 className={css.titleMedia}>Соціальні мережі:</h3>
             <div className={css.containerSocialMedia}>
               <Link to="https://www.instagram.com">
                 <svg
