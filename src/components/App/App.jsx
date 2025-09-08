@@ -9,7 +9,9 @@ import { selectIsRefreshing } from "../../redux/auth/selectors";
 import MyAds from "../MyAds/MyAds";
 import DataUser from "../DataUser/DataUser";
 import { RestrictedRoute } from "../RestrictedRoute";
-
+import { PrivateRoute } from "../PrivateRoute";
+import AddAdPage from "../../pages/AddAdPage/AddAdPage";
+import clsx from "clsx";
 
 const Layout = lazy(() => import("../Layout/Layout"));
 const NotFoundPage = lazy(() =>
@@ -42,6 +44,15 @@ export default function App() {
           <Route index element={<MainPage />} />
           <Route path="ads" element={<LookForPage />} />
           <Route path="ads/:id" element={<AdViewPage />} />
+          <Route
+            path="ads/add"
+            element={
+              <PrivateRoute
+                component={<AddAdPage />}
+                redirectTo="/auth/login"
+              />
+            }
+          />
 
           <Route path="profile" element={<ProfilePage />}>
             <Route path="own" element={<MyAds />} />

@@ -1,0 +1,48 @@
+.addAdMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.addAdAside {
+  display: none;
+}
+@media screen and (min-width: 834px) {
+  .addAdMain {
+    margin-top: 40px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .addAdMain {
+    margin-top: 40px;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 10px;
+  }
+  .addAdAside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 480px;
+    height: 100vh;
+    justify-content: center;
+    color: var(--color-white);
+    background-color: var(--color-blue);
+  }
+  .addAdAsideContent {
+    width: 381px;
+    padding-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    row-gap: 24px;
+  }
+  .addAdAsideTitle {
+    font-size: 28px;
+    line-height: 32px;
+    letter-spacing: -0.56px;
+  }
+}

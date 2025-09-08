@@ -1,0 +1,54 @@
+.wrapper {
+  margin-bottom: 16px;
+}
+
+.label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.input {
+  display: block;
+  margin-top: 4px;
+}
+
+.preview {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.preview img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.overlap {
+  display: flex;
+  align-items: center;
+}
+
+.overlap img {
+  width: clamp(120px, 30vw, 180px);
+  height: clamp(90px, 22vw, 120px);
+  object-fit: cover;
+  border-radius: 20px;
+  margin-left: clamp(-40px, -7vw, -80px); /* ефект перекриття */
+  border: 3px solid #fff; /* біла рамка для чистоти */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.overlap img:first-child {
+  margin-left: 0;
+}
+
+.overlap img:hover {
+  transform: scale(1.05); /* трохи підсвічує фото при ховері */
+}
