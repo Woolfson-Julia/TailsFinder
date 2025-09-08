@@ -3,7 +3,7 @@ import css from "./LoginForm.module.css";
 import { Formik, Form, Field } from "formik";
 import { useId, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { selectLoading, selectError } from "../../redux/auth/selectors";
 import Loader from "../Loader/Loader";
@@ -19,7 +19,7 @@ import ToastInfo from "../ToastInfo/ToastInfo";
 export default function LoginForm() {
   const isLoading = useSelector(selectLoading);
   const isError = useSelector(selectError);
-
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
   const emailFieldId = useId();
@@ -36,9 +36,23 @@ export default function LoginForm() {
       {isLoading ? (
         <Loader />
       ) : (
-        <div className={`${css.container} container`}>
-          <div className={css.loginWrapper}>
-            <h1 className={css.heading}>Login</h1>
+        <div className={`container`}>
+          <div className={css.registerWrapper}>
+      <div  className={css.div2}>
+            <button
+              type="button"
+              className={css.backButton}
+              onClick={() => navigate(-1)}
+            > ←<span className={css.BackBut}> Повернутися назад</span>
+            </button>
+
+            <h1 className={css.heading}>Увійти</h1>
+
+            <p className={css.loginPrompt}>
+              Ще не маєте акаунта?{" "}
+              <Link to="/auth/register" className={css.loginLink}>Зареєструватися</Link>
+            </p>
+
             <Formik
               initialValues={{
                 email: "",
@@ -51,14 +65,14 @@ export default function LoginForm() {
             >
               <Form className={css.form}>
                 <label htmlFor={emailFieldId} className={css.inputLabel}>
-                  Enter your email address
+                  Eemail
                 </label>
                 <Field
                   className={css.inputField}
                   id={emailFieldId}
                   type="email"
                   name="email"
-                  placeholder="email@gmail.com"
+                  placeholder="katesyvash@gmail.com"
                 ></Field>
                 <FixedErrorMessage
                   name="email"
@@ -66,51 +80,73 @@ export default function LoginForm() {
                 ></FixedErrorMessage>
 
                 <label htmlFor={passwordFieldId} className={css.inputLabel}>
-                  Enter your password
+                  Пароль
                 </label>
-                <div className={css.passwordWrapper}>
-                  <Field
+                <Field
                     className={css.inputField}
                     id={passwordFieldId}
-                    type={showPassword ? "text" : "password"}
+                    type={"password"}
                     name="password"
                     placeholder="********"
-                  ></Field>
-                  <Button
-                    onClick={() => setShowPassword((prev) => !prev)}
-                    className={css.toggleButton}
-                    type="button"
-                  >
-                    <svg className={css.eyeSvg}>
-                      {showPassword ? (
-                        <use xlinkHref="/sprite.svg#icon-eye-24px" />
-                      ) : (
-                        <use xlinkHref="/sprite.svg#icon-eye-close-24px" />
-                      )}
-                    </svg>
-                  </Button>
-                </div>
-
+                ></Field>
                 <FixedErrorMessage
                   name="password"
                   className={css.error}
                 ></FixedErrorMessage>
 
+
+              <div className={css.button}>
+                <Button
+                  type="button"
+                  variant={`darkButton`}
+                  className={css.submitButton}
+                  onClick={() => navigate(-1)} 
+                >Назад
+                </Button>
+
                 <Button
                   type="submit"
                   variant={`darkButton`}
                   className={css.submitButton}
-                >
-                  Login
+                >Увійти
                 </Button>
+              </div>
+
               </Form>
             </Formik>
-            <p className={css.registerPrompt}>
-              Don&apos;t have an account?{" "}
-              <Link to="/auth/register" className={css.registerLink}>
-                Register
-              </Link>
-            </p>
+      </div>
+            <div className={css.socialIcons}>
+              <div className={css.help}>
+                <h3 className={css.h3}>Як це працює</h3>
+                <p className={css.halpP}>Щоб розмістити оголошення або знайти свого улюбленця, необхідно авторизуватися.</p>
+                <p className={css.halpP}>Це можна зробити двома способами:</p>
+                <ul>
+                  <li className={css.halpli}>
+                  Заповнити форму реєстрації (ім’я, email, пароль)
+                  </li>
+                  <li className={css.halpli}>
+                  Увійти за допомогою соцмереж чи сервісів: Facebook, Google або Microsoft
+                  </li>
+                </ul>
+                <p className={css.halpP}>Оберіть зручний для вас варіант і приєднуйтесь до нашої спільноти, де кожна тваринка має шанс знайти свій дім
+                </p>
+              </div>
+
+              <p className={css.p}>Продовжити з:</p>
+
+              <div className={css.div}>
+              <svg className={css.icon} viewBox="0 0 32 32">
+                <use href="../../../public/sprite.svg#icon-flat-color-icons_google" />
+              </svg>
+              <svg className={css.icon} viewBox="0 0 33 32">
+                <use href="../../../public/sprite.svg#icon-facebook2" />
+              </svg>
+              <svg className={css.icon} viewBox="0 0 32 32">
+                <use href="../../../public/sprite.svg#icon-prime_microsoft" />
+              </svg>
+              </div>
+            </div>
+            
           </div>
         </div>
       )}
