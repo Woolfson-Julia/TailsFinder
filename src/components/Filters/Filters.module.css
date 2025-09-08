@@ -1,3 +1,111 @@
+.section {
+  margin-bottom: 24px;
+}
+.filtersContainer {
+  margin-bottom: 24px;
+}
+.mobileBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+}
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  backdrop-filter: blur(4px);
+  background: var(--color-white);
+  z-index: 999;
+  padding: 25px 10px 0 10px;
+}
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 160px;
+}
+.form {
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+gap: 48px;
+}
+.icon {
+  fill: var(--color-black);
+}
+.btnSvg {
+  background-color: transparent;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnShow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+width: 273px;
+height: 40px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.23;
+  letter-spacing: -0.02em;
+}
+.btnIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  width: 59px;
+  height: 32px;
+  background-color: var(--color-blue);
+  position: absolute;
+  top: 4px;
+  right: 10px;
+}
+.iconFilter {
+  fill: var(--color-white);
+}
+.list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+}
+
+.btn {
+  display: flex;
+align-items: center;
+justify-content: center;
+gap: 6px;
+border-radius: 20px;
+padding: 4px 8px;
+background: var(--color-btn-gray);
+height: 24px;
+font-weight: 400;
+font-size: 12px;
+line-height: 1.33;
+letter-spacing: -0.02em;
+
+}
+
+@media screen and (min-width: 834px) {
+.section {
+  margin-bottom: 48px;
+}
+}
+
+
+
 /* .filtersContainer {
   display: flex;
   flex-direction: column;

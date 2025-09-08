@@ -9,6 +9,7 @@ import { selectIsRefreshing } from "../../redux/auth/selectors";
 import MyAds from "../MyAds/MyAds";
 import DataUser from "../DataUser/DataUser";
 import { RestrictedRoute } from "../RestrictedRoute";
+import ScrollToTop from "../ScrollToTop/ScrollToTop";
 
 
 const Layout = lazy(() => import("../Layout/Layout"));
@@ -36,9 +37,10 @@ export default function App() {
   return isRefreshing ? (
     <Loader />
   ) : (
-    <Suspense fallback={<Loader />}>
-      <Routes>
-        <Route path="/" element={<Layout />}>
+      <Suspense fallback={<Loader />}>
+        <ScrollToTop/>
+        <Routes>
+          <Route path="/" element={<Layout />}>
           <Route index element={<MainPage />} />
           <Route path="ads" element={<LookForPage />} />
           <Route path="ads/:id" element={<AdViewPage />} />
