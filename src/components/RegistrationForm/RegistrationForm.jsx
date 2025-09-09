@@ -1,15 +1,17 @@
 import css from "./RegistrationForm.module.css";
 
 import { Formik, Form, Field } from "formik";
-import { Link } from "react-router-dom";
-import { useId, useState } from "react";
+import { Link, useNavigate  } from "react-router-dom";
+
+
+import { useId } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { selectLoading, selectError } from "../../redux/auth/selectors";
 
 import { validationSchema } from "./validationSchema";
 import { register } from "../../redux/auth/operations";
-import FixedErrorMessage from "../RegistrationForm/FixedErrorMessage";
+import FixedErrorMessage from "./FixedErrorMessage";
 
 
 import Button from "../Button/Button";
@@ -18,28 +20,36 @@ import Loader from "../Loader/Loader";
 
 export default function RegistrationForm() {
   const nameFieldId = useId();
+  const telFieldId = useId();
   const emailFieldId = useId();
   const passwordFieldId = useId();
-  const checkPasswordFieldId = useId();
   const privacyPolicyId = useId();
-
-  const [showPassword, setShowPassword] = useState(false);
-  const [showCheckPassword, setShowCheckPassword] = useState(false);
 
   const dispatch = useDispatch();
 
   const isLoading = useSelector(selectLoading);
   const isError = useSelector(selectError);
 
+    const navigate = useNavigate();
+
   const handleSubmit = (values, actions) => {
-    const { name, email, password } = values;
+      console.log("Submitting form..."); // <--- лог для перевірки
+    const { name, email, password, tel } = values;
     const valuesToSend = {
       name,
       email,
       password,
+      tel
     };
-    dispatch(register(valuesToSend));
-    actions.resetForm();
+  dispatch(register(valuesToSend))
+    .unwrap()
+    .then(() => {
+      actions.resetForm();  // скидання форми тільки після успіху
+      navigate("/");        // переходимо на головну або профіль
+    })
+    .catch((err) => {
+      console.error("Помилка реєстрації:", err);
+    });
   };
 
   return (
@@ -47,44 +57,70 @@ export default function RegistrationForm() {
       {isLoading ? (
         <Loader />
       ) : (
-        <div className={`${css.container} container`}>
+        <div className={`container`}>
           <div className={css.registerWrapper}>
-            <h1 className={css.heading}>Register</h1>
-            <p className={css.description}>
-              Join our community of culinary enthusiasts, save your favorite
-              recipes, and share your cooking creations
+
+            <div>
+            <button
+              type="button"
+              className={css.backButton}
+              onClick={() => navigate(-1)}
+            > ←<span className={css.BackBut}> Повернутися назад</span>
+            </button>
+
+            <h1 className={css.title}>Зареєструватися</h1>
+            <p className={css.loginPrompt}>
+              Вже маєте акаунт?{" "}
+              <Link to="/auth/login" className={css.loginLink}>Увійдіть.</Link>
             </p>
+            
             <Formik
               initialValues={{
                 name: "",
                 email: "",
                 password: "",
                 checkPassword: "",
+                tel: "",
                 acceptedTerms: false,
               }}
               validationSchema={validationSchema}
               onSubmit={handleSubmit}
               validateOnBlur={false}
-              validateOnChange={false}
+              validateOnChange={true}
             >
-              <Form className={css.form}>
+              <Form>
                 <label htmlFor={nameFieldId} className={css.inputLabel}>
-                  Enter your name
+                  Ім'я
                 </label>
                 <Field
                   className={css.inputField}
                   id={nameFieldId}
                   type="text"
                   name="name"
-                  placeholder="Max"
+                  placeholder="Катерина"
                 ></Field>
                 <FixedErrorMessage
                   name="name"
                   className={css.error}
                 ></FixedErrorMessage>
 
+                <label htmlFor={telFieldId} className={css.inputLabel}>
+                  Телефон
+                </label>
+                <Field
+                  className={css.inputField}
+                  id={telFieldId}
+                  type="text"
+                  name="tel"
+                  placeholder="+38(095)-24-167-95"
+                ></Field>
+                <FixedErrorMessage
+                  name="tel"
+                  className={css.error}
+                ></FixedErrorMessage>
+
                 <label htmlFor={emailFieldId} className={css.inputLabel}>
-                  Enter your email address
+                  Email
                 </label>
                 <Field
                   className={css.inputField}
@@ -99,111 +135,103 @@ export default function RegistrationForm() {
                 ></FixedErrorMessage>
 
                 <label htmlFor={passwordFieldId} className={css.inputLabel}>
-                  Create a strong password
+                  Пароль
                 </label>
-
-                <div className={css.passwordWrapper}>
-                  <Field
+                <Field
                     className={css.inputField}
                     id={passwordFieldId}
-                    type={showPassword ? "text" : "password"}
+                    type={"password"}
                     name="password"
                     placeholder="********"
-                  ></Field>
-                  <Button
-                    onClick={() => setShowPassword((prev) => !prev)}
-                    className={css.toggleButton}
-                  >
-                    <svg className={css.eyeSvg}>
-                      {showPassword ? (
-                        <use xlinkHref="/sprite.svg#icon-eye-24px" />
-                      ) : (
-                        <use xlinkHref="/sprite.svg#icon-eye-close-24px" />
-                      )}
-                    </svg>
-                  </Button>
-                </div>
+                ></Field>
                 <FixedErrorMessage
                   name="password"
                   className={css.error}
                 ></FixedErrorMessage>
 
-                <label
-                  htmlFor={checkPasswordFieldId}
-                  className={css.inputLabel}
-                >
-                  Repeat your password
+                <label htmlFor={privacyPolicyId} className={css.checkBoxLabel}>
+                <Field
+                  type="checkbox"
+                  name="acceptedTerms"
+                  id={privacyPolicyId}
+                  className={css.checkBox}
+                />
+                <span className={css.span}>
+                  Погоджуюся з умовами користування та{" "}
+                  <a href="#" className={css.termsLink}>
+                    політикою конфіденційності
+                  </a>
+                </span>
                 </label>
-                <div className={css.passwordWrapper}>
-                  <Field
-                    className={css.inputField}
-                    id={checkPasswordFieldId}
-                    type={showCheckPassword ? "text" : "password"}
-                    name="checkPassword"
-                    placeholder="********"
-                  ></Field>
-                  <Button
-                    onClick={() => setShowCheckPassword((prev) => !prev)}
-                    className={css.toggleButton}
-                  >
-                    <svg className={css.eyeSvg}>
-                      {showCheckPassword ? (
-                        <use xlinkHref="/sprite.svg#icon-eye-24px" />
-                      ) : (
-                        <use xlinkHref="/sprite.svg#icon-eye-close-24px" />
-                      )}
-                    </svg>
-                  </Button>
-                </div>
-
                 <FixedErrorMessage
-                  name="checkPassword"
-                  className={css.error}
+                  name="acceptedTerms"
+                  className={css.errorCheck}
                 ></FixedErrorMessage>
-                <div className={css.wrapperCheck}>
-                  <label
-                    htmlFor={privacyPolicyId}
-                    className={`${css.inputLabel} ${css.checkBoxLabel}`}
-                  >
-                    <Field
-                      as="input"
-                      className={css.checkBox}
-                      type="checkbox"
-                      name="acceptedTerms"
-                      id={privacyPolicyId}
-                    />
-                    <span className={css.customCheckbox}>
-                      <svg className={css.checkmark}>
-                        <use xlinkHref="/sprite.svg#icon-check"></use>
-                      </svg>
-                    </span>
-                    <span>
-                      I agree to the{" "}
-                      <a href="#" className={css.termsLink}>
-                        Terms of Service and Privacy Policy
-                      </a>
-                    </span>
-                  </label>
-                  <FixedErrorMessage
-                    name="acceptedTerms"
-                    className={css.errorCheck}
-                  ></FixedErrorMessage>
-                </div>
+
+                <label htmlFor="newsletter" className={css.checkBoxLabel2}>
+                <Field
+                  type="checkbox"
+                  name="newsletter"
+                  id="newsletter"
+                  className={css.checkBox}
+                />
+                <span className={css.span}>Погоджуюся отримувати розсилку на Email</span>
+                </label>
+
+              <div className={css.button}>
+                <Button
+                  type="button"
+                  variant={`darkButton`}
+                  className={css.submitButton}
+                  onClick={() => navigate(-1)} 
+                >Назад
+                </Button>
+
                 <Button
                   type="submit"
                   variant={`darkButton`}
                   className={css.submitButton}
-                >
-                  Create account
+                >Зареєструватися
                 </Button>
+              </div>
+              
               </Form>
             </Formik>
-            <p className={css.loginPrompt}>
-              Already have an account?{" "}
-              <Link to="/auth/login" className={css.loginLink}>
-                Log in
-              </Link>
-            </p>
+            </div>
+
+            
+            <div className={css.socialIcons}>
+              <div className={css.help}>
+                <h3 className={css.h3}>Як це працює</h3>
+                <p className={css.halpP}>Щоб розмістити оголошення або знайти свого улюбленця, необхідно авторизуватися.</p>
+                <p className={css.halpP}>Це можна зробити двома способами:</p>
+                <ul>
+                  <li className={css.halpli}>
+                  Заповнити форму реєстрації (ім’я, email, пароль)
+                  </li>
+                  <li className={css.halpli}>
+                  Увійти за допомогою соцмереж чи сервісів: Facebook, Google або Microsoft
+                  </li>
+                </ul>
+                <p className={css.halpP}>Оберіть зручний для вас варіант і приєднуйтесь до нашої спільноти, де кожна тваринка має шанс знайти свій дім
+                </p>
+              </div>
+
+              <p className={css.p}>Продовжити з:</p>
+
+              <div className={css.div}>
+              <svg className={css.icon} viewBox="0 0 32 32">
+                <use href="../../../public/sprite.svg#icon-flat-color-icons_google" />
+              </svg>
+              <svg className={css.icon} viewBox="0 0 33 32">
+                <use href="../../../public/sprite.svg#icon-facebook2" />
+              </svg>
+              <svg className={css.icon} viewBox="0 0 32 32">
+                <use href="../../../public/sprite.svg#icon-prime_microsoft" />
+              </svg>
+              </div>
+            </div>
+
           </div>
         </div>
       )}
