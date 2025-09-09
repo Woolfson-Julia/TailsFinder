@@ -33,7 +33,7 @@ export default function AdDetails({ ad }) {
     }
   };
   return (
-    <section className="section">
+    <section className={css.section}>
       <div className={`container ${css.container}`}>
         <div className={css.backContainer}>
           <Link to="/" className={css.backBtn}>

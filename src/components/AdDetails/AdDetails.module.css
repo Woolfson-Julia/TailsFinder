@@ -1,3 +1,7 @@
+.section {
+    padding-top:24px;
+    padding-bottom: 24px;
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -13,7 +17,7 @@
   line-height: 1.5;
   letter-spacing: -0.02em;
   margin-bottom: 16px;
-  padding: 16px 30px;
+  padding: 0px 30px;
 }
 .listImg {
   display: flex;
