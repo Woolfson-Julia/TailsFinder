@@ -24,10 +24,15 @@ const advertsSlice = createSlice({
   initialState: {
     latest: [],
     list: [],
-    pagination: { total: 0, page: 1, perPage: 20, totalPages: 1 },
+    pagination: { total: 0, page: 1, perPage: 6, totalPages: 1 },
     selected: null,
     loading: false,
     error: null,
+  },
+  reducers: {
+    setPage: (state, action) => {
+      state.pagination.page = action.payload;
+    },
   },
   extraReducers: (builder) =>
     builder
@@ -39,7 +44,13 @@ const advertsSlice = createSlice({
       .addCase(fetchLatestAdverts.rejected, handleRejected)
       .addCase(fetchAdverts.pending, handlePending)
       .addCase(fetchAdverts.fulfilled, (state, action) => {
-        state.list = action.payload.data;
+        const page = Number(action.payload.pagination.page);
+        const newAds = action.payload.data;
+        if (page === 1) {
+          state.list = newAds;
+        } else {
+          state.list = [...state.list, ...newAds];
+        }
         state.pagination = action.payload.pagination;
         state.loading = false;
       })
@@ -80,3 +91,4 @@ const advertsSlice = createSlice({
 });
 
 export default advertsSlice.reducer;
+export const { setPage } = advertsSlice.actions;

@@ -9,10 +9,10 @@ import { selectIsRefreshing } from "../../redux/auth/selectors";
 import MyAds from "../MyAds/MyAds";
 import DataUser from "../DataUser/DataUser";
 import { RestrictedRoute } from "../RestrictedRoute";
+import ScrollToTop from "../ScrollToTop/ScrollToTop";
 import { PrivateRoute } from "../PrivateRoute";
 import AddAdPage from "../../pages/AddAdPage/AddAdPage";
 import clsx from "clsx";
-
 const Layout = lazy(() => import("../Layout/Layout"));
 const NotFoundPage = lazy(() =>
   import("../../pages/NotFoundPage/NotFoundPage")
@@ -39,6 +39,7 @@ export default function App() {
     <Loader />
   ) : (
     <Suspense fallback={<Loader />}>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<MainPage />} />

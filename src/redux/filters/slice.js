@@ -28,11 +28,9 @@ const slice = createSlice({
     changeSelectedStatusFilter: (state, action) => {
       state.selectedStatus = action.payload;
     },
-    resetFilters: (state) => {
-      state.selectedCity = "";
-      state.selectedDistrict = "";
-      state.selectedSpecies = "";
-      state.selectedStatus = "";
+    resetFilters: (state, action) => {
+      const key = action.payload;
+      state[key] = "";
     },
   },
   extraReducers: (builder) => {
@@ -43,10 +41,10 @@ const slice = createSlice({
       })
       .addCase(fetchFilters.fulfilled, (state, action) => {
         state.loading = false;
-        state.cities = action.payload.cities;
-        state.districts = action.payload.districts;
-        state.species = action.payload.species;
-        state.statuses = action.payload.statuses;
+        state.cities = action.payload.data.cities;
+        state.districts = action.payload.data.districts;
+        state.species = action.payload.data.species;
+        state.statuses = action.payload.data.statuses;
       })
       .addCase(fetchFilters.rejected, (state, action) => {
         state.loading = false;

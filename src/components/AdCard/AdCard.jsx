@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import css from "./AdCard.module.css";
 
+
+
+
 export default function AdCard({ advert }) {
   let status = "";
   if (advert.status === "lost") {
