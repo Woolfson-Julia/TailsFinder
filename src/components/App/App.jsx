@@ -11,8 +11,8 @@ import DataUser from "../DataUser/DataUser";
 import { RestrictedRoute } from "../RestrictedRoute";
 import ScrollToTop from "../ScrollToTop/ScrollToTop";
 import { PrivateRoute } from "../PrivateRoute";
-import AddAdPage from "../../pages/AddAdPage/AddAdPage";
 import clsx from "clsx";
+
 const Layout = lazy(() => import("../Layout/Layout"));
 const NotFoundPage = lazy(() =>
   import("../../pages/NotFoundPage/NotFoundPage")
@@ -21,7 +21,7 @@ const MainPage = lazy(() => import("../../pages/MainPage/MainPage"));
 const LookForPage = lazy(() => import("../../pages/LookForPage/LookForPage"));
 const ProfilePage = lazy(() => import("../../pages/ProfilePage/ProfilePage"));
 const AdViewPage = lazy(() => import("../../pages/AdViewPage/AdViewPage"));
-
+const AddAdPage = lazy(() => import("../../pages/AddAdPage/AddAdPage"));
 const AuthPage = lazy(() => import("../../pages/AuthPage/AuthPage"));
 
 export default function App() {
