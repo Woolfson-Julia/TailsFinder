@@ -69,7 +69,12 @@ export default function Filters() {
 
     const handleReset = (filterKey) => {
       dispatch(resetFilters(filterKey));
-    };
+  };
+  
+const handleResetAll = () => {
+  dispatch(resetFilters());
+  
+};
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -80,16 +85,12 @@ export default function Filters() {
   }, [dispatch]);
 
   useEffect(() => {
-    const handleKeypress = (e) => {
-      if (e.key === "Escape") {
-        setOpen(false);
-      }
-    };
-    document.addEventListener("keydown", handleKeypress);
-    return () => {
-      document.removeEventListener("keydown", handleKeypress);
-    };
-  }, []);
+    if (open) {
+      document.body.classList.add("modal-open");
+    } else {
+      document.body.classList.remove("modal-open");
+    }
+  }, [open]);
 
 
 
@@ -134,6 +135,14 @@ export default function Filters() {
                       onClick={handleClose}
                     >
                       Показати оголошення
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="none"
+                      className={css.btnResetAll}
+                      onClick={handleResetAll}
+                    >
+                      Очистити фільтр
                     </Button>
                   </div>
                 </div>

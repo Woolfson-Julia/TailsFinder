@@ -1,6 +1,7 @@
+import { selectSelectedCity, selectSelectedDistrict, selectSelectedSpecies, selectSelectedStatus } from '../../redux/filters/selectors';
 import css from './FiltersForm.module.css';
 import { nanoid } from "nanoid";
-
+import { useSelector } from 'react-redux';
 
 export default function FiltersForm({
   statuses,
@@ -13,12 +14,15 @@ export default function FiltersForm({
   handleDistrictsChange
 }) {
 
-
+  const selectedStatus = useSelector(selectSelectedStatus);
+  const selectedSpecies = useSelector(selectSelectedSpecies);
+  const selectedCity = useSelector(selectSelectedCity);
+  const selectedSDistrict = useSelector(selectSelectedDistrict);
   return (
     <form className={css.form}>
       <select
         name="status"
-        defaultValue=""
+        value={selectedStatus}
         className={css.select}
         onChange={handleStatusesChange}
       >
@@ -33,7 +37,7 @@ export default function FiltersForm({
       </select>
       <select
         name="species"
-        defaultValue=""
+        value={selectedSpecies}
         className={css.select}
         onChange={handleSpeciesChange}
       >
@@ -48,7 +52,7 @@ export default function FiltersForm({
       </select>
       <select
         name="cities"
-        defaultValue=""
+        value={selectedCity}
         className={css.select}
         onChange={handleCitiesChange}
       >
@@ -63,7 +67,7 @@ export default function FiltersForm({
       </select>
       <select
         name="districts"
-        defaultValue=""
+        value={selectedSDistrict}
         className={css.select}
         onChange={handleDistrictsChange}
       >
