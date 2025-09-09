@@ -13,7 +13,7 @@ const AddAdPage = () => {
   };
 
   return (
-    <main className={`${css.addAdMain} container`}>
+    <div className={`${css.addAdMain} container`}>
       <section className={`${css.addAdSection} section`}>
         <AddAdForm onSubmit={handleSubmit} />
       </section>
@@ -32,7 +32,7 @@ const AddAdPage = () => {
           </ul>
         </div>
       </aside>
-    </main>
+    </div>
   );
 };
 

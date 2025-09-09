@@ -5,6 +5,10 @@ import css from "./AddAdForm.module.css";
 import { validationSchema } from "./validationScheme.js";
 import { LocationPicker } from "../LocationPicker/LocationPicker";
 import FilePicker from "../FilePicker/FilePicker";
+import DatePicker from "react-datepicker";
+import { registerLocale } from "react-datepicker";
+import uk from "date-fns/locale/uk";
+import "react-datepicker/dist/react-datepicker.css";
 import Button from "../Button/Button.jsx";
 import { fetchEnumOptions } from "../../redux/enums/operations.js";
 import {
@@ -14,6 +18,8 @@ import {
   selectSpecies,
   selectStatus,
 } from "../../redux/enums/selectors.js";
+
+registerLocale("uk", uk);
 
 const AddAdForm = ({ onSubmit }) => {
   const dispatch = useDispatch();
@@ -38,10 +44,14 @@ const AddAdForm = ({ onSubmit }) => {
         size: "",
         description: "",
         location: { lat: null, lng: null },
+        date: null,
         notificationsAllowed: false,
       }}
       validationSchema={validationSchema}
-      onSubmit={onSubmit}
+      onSubmit={(values) => {
+        console.log("Formik onSubmit called!", values);
+        onSubmit(values);
+      }}
     >
       {({ values, setFieldValue, isSubmitting }) => (
         <Form className={css.addAdForm}>
@@ -79,7 +89,7 @@ const AddAdForm = ({ onSubmit }) => {
             </Field>
             <Field
               as="select"
-              name="Color"
+              name="color"
               className={css.addAdFormDropdownsSelect}
             >
               <option value="">Забарвлення</option>
@@ -116,6 +126,33 @@ const AddAdForm = ({ onSubmit }) => {
                 </option>
               ))}
             </Field>
+            <ErrorMessage
+              name="size"
+              component="div"
+              className={css.addAdFormErrTxt}
+            />
+          </div>
+
+          {/* Date & Time Picker */}
+          <div className={css.addAdFormDate}>
+            <label className={css.addAdFormLbl}>Дата та час події</label>
+            <DatePicker
+              selected={values.date}
+              onChange={(date) => setFieldValue("date", date)}
+              showTimeSelect
+              timeFormat="HH:mm"
+              timeIntervals={15}
+              dateFormat="dd/MM/yyyy HH:mm"
+              className={css.addAdFormDateInput}
+              placeholderText="Оберіть дату та час"
+              withPortal
+              locale="uk"
+            />
+            <ErrorMessage
+              name="date"
+              component="div"
+              className={css.addAdFormErrTxt}
+            />
           </div>
 
           {/* Description */}
@@ -141,7 +178,16 @@ const AddAdForm = ({ onSubmit }) => {
               value={values.location}
               onChange={(loc) => setFieldValue("location", loc)}
             />
-            <ErrorMessage name="location.lat" component="div" className={css} />
+            <ErrorMessage
+              name="location.lat"
+              component="div"
+              className={css.addAdFormErrTxt}
+            />
+            <ErrorMessage
+              name="location.lng"
+              component="div"
+              className={css.addAdFormErrTxt}
+            />
           </div>
 
           {/* Photos Picker*/}
