@@ -1,7 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
+import { selectSelectedCity, selectSelectedDistrict, selectSelectedSpecies, selectSelectedStatus } from "../filters/selectors";
 
 export const selectAdvertsState = (state) => state.adverts;
-
 export const selectAdvertsList = (state) => state.adverts.list;
 export const selectAdvertsLatest = (state) => state.adverts.latest;
 export const selectAdvertSelected = (state) => state.adverts.selected;
@@ -12,12 +12,11 @@ export const selectAdvertsLoading = (state) => state.adverts.loading;
 export const selectAdvertsError = (state) => state.adverts.error;
 
 export const selectFilteredAdverts = createSelector(
-  [selectAdvertsList, (state, filters) => filters],
-  (list, filters) => {
+  [selectAdvertsList, selectSelectedStatus, selectSelectedSpecies, selectSelectedCity, selectSelectedDistrict],
+  (list, status, species, city, district) => {
     if (!list) return [];
 
     return list.filter((ad) => {
-      const { status, species, city, district } = filters || {};
 
       const statusMatch = !status || ad.status === status;
       const speciesMatch = !species || ad.animal?.species === species;
@@ -39,10 +38,10 @@ export const selectPaginatedAdverts = createSelector(
   (filtered, pagination) => {
     if (!filtered) return [];
 
-    const { page = 1, perPage = 20 } = pagination;
-    const start = (page - 1) * perPage;
-    const end = start + perPage;
+    const { page = 1, perPage = 6 } = pagination;
+    // const start = (page - 1) * perPage;
+    const end = page + perPage;
 
-    return filtered.slice(start, end);
+    return filtered.slice(0, end);
   }
 );

@@ -1,9 +1,7 @@
 import css from "./MainPage.module.css";
 
-
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-
 
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import hero from "../../assets/hero@1x.png";
@@ -12,6 +10,7 @@ import Info from "../../components/Info/Info";
 import HowItWork from "../../components/HowItWork/HowItWork";
 import Button from "../../components/Button/Button";
 import LookFor from "../../components/LookFor/LookFor";
+import ToastInfo from "../../components/ToastInfo/ToastInfo";
 
 export default function MainPage() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -61,6 +60,7 @@ export default function MainPage() {
       <Info />
       <LookFor />
       <HowItWork />
+      <ToastInfo />
     </>
   );
 }
