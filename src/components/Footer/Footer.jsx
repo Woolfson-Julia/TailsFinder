@@ -33,7 +33,7 @@ export default function Footer() {
         <div className={css.containerContact}>
           <h3 className={css.title}>Контакти</h3>
           <address className={css.address}>
-            <p className={css.contactItem}>
+            <a className={css.contactItem}>
               <svg
                 className={css.iconContact}
                 width="24"
@@ -43,7 +43,7 @@ export default function Footer() {
                 <use href="/sprite.svg#icon-person"></use>
               </svg>
               <a href="mailto:support@petsafe.ua">support@tailsfinder.ua</a>
-            </p>
+            </a>
             <p className={css.contactItem}>
               <svg
                 className={css.iconLocation}
@@ -55,7 +55,7 @@ export default function Footer() {
               </svg>
               м. Київ, вул. Добрих Сердець, 12
             </p>
-            <p className={css.contactItem}>
+            <a className={css.contactItem}>
               <svg
                 className={css.iconContact}
                 width="24"
@@ -65,7 +65,7 @@ export default function Footer() {
                 <use href="/sprite.svg#icon-call"></use>
               </svg>
               <a href="tel:+3800671234567">+38 (067) 123-45-67</a>
-            </p>
+            </a>
           </address>
         </div>
         <div className={css.containerNavMedia}>
@@ -85,7 +85,11 @@ export default function Footer() {
           <div className={css.containerSocial}>
             <h3 className={css.titleMedia}>Соціальні мережі:</h3>
             <div className={css.containerSocialMedia}>
-              <Link to="https://www.instagram.com">
+              <Link
+                to="https://www.instagram.com"
+                target="_blank"
+                rel="noopener"
+              >
                 <svg
                   className={css.iconInstagram}
                   width="24"
@@ -95,7 +99,11 @@ export default function Footer() {
                   <use href="/sprite.svg#icon-instagram"></use>
                 </svg>
               </Link>
-              <Link to="https://www.facebook.com">
+              <Link
+                to="https://www.facebook.com"
+                target="_blank"
+                rel="noopener"
+              >
                 <svg
                   className={css.icon}
                   width="24"
@@ -105,7 +113,7 @@ export default function Footer() {
                   <use href="/sprite.svg#icon-facebook"></use>
                 </svg>
               </Link>
-              <Link to="https://www.youtube.com">
+              <Link to="https://www.youtube.com" target="_blank" rel="noopener">
                 <svg
                   className={css.icon}
                   width="24"
@@ -115,7 +123,11 @@ export default function Footer() {
                   <use href="/sprite.svg#icon-youtube"></use>
                 </svg>
               </Link>
-              <Link to="https://www.telegram.org">
+              <Link
+                to="https://www.telegram.org"
+                target="_blank"
+                rel="noopener"
+              >
                 <svg
                   className={css.icon}
                   width="24"
