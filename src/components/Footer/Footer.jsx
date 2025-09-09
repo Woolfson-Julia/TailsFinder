@@ -16,7 +16,7 @@ export default function Footer() {
   return (
     <footer className={css.footer}>
       <div className={`${css.container} container`}>
-        <a className={css.linkLogo} href="/">
+        <Link className={css.linkLogo} href="/">
           <picture>
             <source
               media="(min-width: 834px)"
@@ -29,11 +29,11 @@ export default function Footer() {
               alt="Logo"
             />
           </picture>
-        </a>
+        </Link>
         <div className={css.containerContact}>
           <h3 className={css.title}>Контакти</h3>
           <address className={css.address}>
-            <a className={css.contactItem}>
+            <p className={css.contactItem}>
               <svg
                 className={css.iconContact}
                 width="24"
@@ -42,8 +42,8 @@ export default function Footer() {
               >
                 <use href="/sprite.svg#icon-person"></use>
               </svg>
-              <a href="mailto:support@petsafe.ua">support@tailsfinder.ua</a>
-            </a>
+              <Link href="mailto:support@petsafe.ua">support@tailsfinder.ua</Link>
+            </p>
             <p className={css.contactItem}>
               <svg
                 className={css.iconLocation}
@@ -55,7 +55,7 @@ export default function Footer() {
               </svg>
               м. Київ, вул. Добрих Сердець, 12
             </p>
-            <a className={css.contactItem}>
+            <p className={css.contactItem}>
               <svg
                 className={css.iconContact}
                 width="24"
@@ -64,8 +64,8 @@ export default function Footer() {
               >
                 <use href="/sprite.svg#icon-call"></use>
               </svg>
-              <a href="tel:+3800671234567">+38 (067) 123-45-67</a>
-            </a>
+              <Link href="tel:+380671234567">+38 (067) 123-45-67</Link>
+            </p>
           </address>
         </div>
         <div className={css.containerNavMedia}>
