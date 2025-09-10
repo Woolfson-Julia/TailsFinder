@@ -41,6 +41,6 @@ export default function ProfileNavigation() {
               Повернутися на головну
             </Link>
           </div>
-        </div>
+      </div>
       </div>
   );}
