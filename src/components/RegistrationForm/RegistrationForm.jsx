@@ -226,7 +226,7 @@ export default function RegistrationForm() {
                 <p className={css.halpP}>Це можна зробити двома способами:</p>
                 <ul>
                   <li className={css.halpli}>
-                    Заповнити форму реєстрації (ім’я, email, пароль)
+                    Заповнити форму реєстрації (ім&apos;я, email, пароль)
                   </li>
                   <li className={css.halpli}>
                     Увійти за допомогою соцмереж чи сервісів: Facebook, Google
@@ -243,13 +243,13 @@ export default function RegistrationForm() {
 
               <div className={css.div}>
                 <svg className={css.icon} viewBox="0 0 32 32">
-                  <use href="../../../public/sprite.svg#icon-flat-color-icons_google" />
+                  <use href="/sprite.svg#icon-flat-color-icons_google" />
                 </svg>
                 <svg className={css.icon} viewBox="0 0 33 32">
-                  <use href="../../../public/sprite.svg#icon-facebook2" />
+                  <use href="/sprite.svg#icon-facebook2" />
                 </svg>
                 <svg className={css.icon} viewBox="0 0 32 32">
-                  <use href="../../../public/sprite.svg#icon-prime_microsoft" />
+                  <use href="/sprite.svg#icon-prime_microsoft" />
                 </svg>
               </div>
             </div>
