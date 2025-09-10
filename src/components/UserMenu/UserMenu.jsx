@@ -5,6 +5,8 @@ import css from "./UserMenu.module.css";
 import Switch from "@mui/material/Switch";
 import { selectUser } from "../../redux/auth/selectors.js";
 
+
+
 export default function UserMenu({ onLinkClick }) {
   const dispatch = useDispatch();
 
@@ -18,6 +20,13 @@ export default function UserMenu({ onLinkClick }) {
     dispatch(openModal({ modalType: "logout" }));
   };
 
+
+const handleLetterClick = () => {
+    if (typeof onLinkClick === "function") {
+      onLinkClick();
+    }
+};
+
   const label = { inputProps: { "aria-label": "Switch demo" } };
 
   return (
@@ -28,7 +37,11 @@ export default function UserMenu({ onLinkClick }) {
 
       <div className={css.info}>
         <div className={css.nameDiv}>
-          <NavLink to="/profile" className={css.letter}>
+          <NavLink
+            to="/profile"
+            className={css.letter}
+            onClick={handleLetterClick}
+          >
             {firstLetter}
           </NavLink>
         </div>
