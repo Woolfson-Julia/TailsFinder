@@ -11,7 +11,7 @@ import DataUser from "../DataUser/DataUser";
 import { RestrictedRoute } from "../RestrictedRoute";
 import ScrollToTop from "../ScrollToTop/ScrollToTop";
 import { PrivateRoute } from "../PrivateRoute";
-import clsx from "clsx";
+// import clsx from "clsx";
 
 const Layout = lazy(() => import("../Layout/Layout"));
 const NotFoundPage = lazy(() =>

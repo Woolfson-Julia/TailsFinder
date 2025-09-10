@@ -10,6 +10,7 @@ import { registerLocale } from "react-datepicker";
 import uk from "date-fns/locale/uk";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "../Button/Button.jsx";
+import ColorsSelect from "../ColorSelect/ColorsSelect.jsx";
 import { fetchEnumOptions } from "../../redux/enums/operations.js";
 import {
   selectColors,
@@ -39,7 +40,7 @@ const AddAdForm = ({ onSubmit }) => {
         photos: [],
         status: "",
         species: "",
-        color: "",
+        colors: [],
         sex: "",
         size: "",
         description: "",
@@ -55,12 +56,6 @@ const AddAdForm = ({ onSubmit }) => {
     >
       {({ values, setFieldValue, isSubmitting }) => (
         <Form className={css.addAdForm}>
-          <h2 className={css.addAdFormTitle}>Додати оголошення</h2>
-          <p className={css.addAdFormTxt}>
-            Заповніть просту форму. Це допоможе швидше знайти улюбленця або його
-            дім
-          </p>
-
           {/* Dropdowns */}
           <div className={css.addAdFormDropdowns}>
             <Field
@@ -89,18 +84,6 @@ const AddAdForm = ({ onSubmit }) => {
             </Field>
             <Field
               as="select"
-              name="color"
-              className={css.addAdFormDropdownsSelect}
-            >
-              <option value="">Забарвлення</option>
-              {colorOptions.map((a) => (
-                <option key={a} value={a}>
-                  {a}
-                </option>
-              ))}
-            </Field>
-            <Field
-              as="select"
               name="sex"
               className={css.addAdFormDropdownsSelect}
             >
@@ -111,9 +94,6 @@ const AddAdForm = ({ onSubmit }) => {
                 </option>
               ))}
             </Field>
-          </div>
-
-          <div className={css.addAdFormDropdowns}>
             <Field
               as="select"
               name="size"
@@ -131,6 +111,12 @@ const AddAdForm = ({ onSubmit }) => {
               component="div"
               className={css.addAdFormErrTxt}
             />
+          </div>
+
+          <div className={css.addAdFormColorsSelect}>
+            <label>Забарвлення</label>
+            <ColorsSelect name="colors" options={colorOptions} />
+            <ErrorMessage name="colors" component="div" className="error" />
           </div>
 
           {/* Date & Time Picker */}

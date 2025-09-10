@@ -18,6 +18,26 @@
   border-radius: 40px;
   padding: 16px 30px;
 }
+.addAdFormDropdowns {
+  width: 349px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 22px;
+  column-gap: 24px;
+}
+.addAdFormDropdownsSelect {
+  width: 162.5px;
+  height: 24px;
+  gap: 12px;
+  font-weight: 300;
+  font-style: Light;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.32px;
+  vertical-align: middle;
+  border: none;
+}
 
 /* Date Picker */
 .addAdFormDate {
@@ -43,7 +63,7 @@
   box-shadow: 0 0 0 2px rgba(91, 90, 255, 0.2);
 }
 
-/* Стилізація календаря */
+/* Styles for React Datepicker */
 :global(.react-datepicker) {
   border: 1px solid #ccc;
   border-radius: 12px;
@@ -80,4 +100,17 @@
 :global(.react-datepicker__time-list-item--selected) {
   background-color: var(--color-blue, #5b5aff);
   color: var(--color-white, #fff);
+}
+
+.addAdFormDescrTxt {
+  width: 357px;
+  height: 50px;
+  border: none;
+  border-bottom: 2px solid var(--black, #000);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.32px;
+  color: var(--black, #000);
+  margin-bottom: 24px;
 }
