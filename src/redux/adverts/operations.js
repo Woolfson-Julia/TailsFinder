@@ -45,22 +45,9 @@ export const fetchAdvertById = createAsyncThunk(
 
 export const createAdvert = createAsyncThunk(
   "adverts/create",
-  async (payload, thunkAPI) => {
+  async (formData, thunkAPI) => {
     try {
-      const formData = new FormData();
-      Object.keys(payload).forEach((key) => {
-        if (key === "photos") {
-          payload.photos.forEach((file) => formData.append("photos", file));
-        } else if (typeof payload[key] === "object") {
-          formData.append(key, JSON.stringify(payload[key]));
-        } else {
-          formData.append(key, payload[key]);
-        }
-      });
-
-      const res = await axios.post("/adverts", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      const res = await axios.post("/adverts", formData);
       return res.data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(

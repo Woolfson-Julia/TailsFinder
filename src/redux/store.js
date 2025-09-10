@@ -11,6 +11,7 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import filtersReducer from "./filters/slice";
+import enumsReducer from "./enums/slice";
 import authReducer from "./auth/slice";
 import advertsReducer from "./adverts/slice";
 import modalReducer from "./modal/slice.js";
@@ -29,6 +30,7 @@ const persistedAuthReducer = persistReducer(
 export const store = configureStore({
   reducer: {
     filters: filtersReducer,
+    enums: enumsReducer,
     auth: persistedAuthReducer,
     modal: modalReducer,
     adverts: advertsReducer,

@@ -1,0 +1,102 @@
+.filePickerWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+}
+
+.filePickerContent {
+  display: flex;
+  flex-direction: row;
+  width: 357;
+  height: 116;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.label {
+  font-family: e-Ukraine;
+  font-weight: 300;
+  font-style: Light;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: var(--color-text);
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.dropZone {
+  display: block;
+  width: 138px;
+  height: 116px;
+  border: 3px dotted #000000;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  background-image: url("../../../public/icon-plus.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50px 50px;
+}
+
+.dropZone:hover {
+  border-color: var(--color-btn-dark-blue);
+}
+.dropZone.empty {
+  flex: 1 1 100%;
+}
+.previewGrid {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.previewItem {
+  position: relative;
+  margin-left: clamp(-40px, -7vw, -80px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+.previewItem:first-child {
+  margin-left: 0;
+}
+.previewItem:hover {
+  transform: scale(1.01);
+}
+.previewGrid img {
+  width: 77px;
+  height: 116px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.removeBtn {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 50%;
+  padding: 2px;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 834px) {
+  .filePickerContent {
+    width: 690px;
+    height: 116px;
+  }
+  .dropZone {
+    width: 138px;
+    height: 116px;
+  }
+  .previewItem img {
+    width: 137px;
+    height: 116px;
+  }
+}
