@@ -26,17 +26,14 @@ export default function LoginForm() {
   const passwordFieldId = useId();
   const dispatch = useDispatch();
 
-const handleSubmit = (values, actions) => {
-  dispatch(logIn(values))
-    .unwrap()
-    .then(() => {
-      actions.resetForm(); // сброс только при успешной авторизации
-      navigate("/"); // например, редирект на главную
-    })
-    .catch((err) => {
-      console.error("Login error:", err);
-    });
-};
+
+  const handleSubmit = async (values, actions) => {
+    dispatch(logIn(values));
+
+    actions.resetForm();
+  };
+
+  
   return (
     <>
       {isLoading ? (
