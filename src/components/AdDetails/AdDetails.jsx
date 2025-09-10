@@ -1,10 +1,14 @@
 import css from "./AdDetails.module.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 import Button from "../Button/Button";
 import { selectIsLoggedIn, selectUserInfo } from "../../redux/auth/selectors";
 import { useNavigate } from "react-router-dom";
 export default function AdDetails({ ad }) {
+  const [showPhone, setShowPhone] = useState(false);
+  const userInfo = useSelector(selectUserInfo);
+
   let status = "";
   if (ad.status === "lost") {
     status = "Загублений";
@@ -21,17 +25,16 @@ export default function AdDetails({ ad }) {
 
   const navigate = useNavigate();
 
-  const user = useSelector(selectUserInfo);
-  console.log(user);
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const handleShow = () => {
     if (!isLoggedIn) {
-      navigate("/auth/register");
+      navigate("/register");
     } else {
-      console.log("hello");
+      setShowPhone(true);
     }
   };
+
   return (
     <section className={css.section}>
       <div className={`container ${css.container}`}>
@@ -102,7 +105,7 @@ export default function AdDetails({ ad }) {
             variant="darkButton"
             onClick={handleShow}
           >
-            Зв&apos;язатися з автором
+            {showPhone ? userInfo.user.phone : "Зв’язатися з автором"}
           </Button>
         </div>
       </div>

@@ -20,3 +20,124 @@
 .active {
     border-bottom-color: var(--color-black);
 }
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    var(--color-white) 0%,
+    var(--color-bg) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+.content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.title {
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1.08;
+  color: var(--color-black);
+}
+.errorCode {
+  font-size: 6rem;
+  font-weight: 900;
+  color: var(--color-blue);
+  opacity: 0.3;
+  line-height: 1;
+  margin: 20px 0;
+  user-select: none;
+}
+.subtitle {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.39;
+  color: var(--color-black);
+  margin-bottom: 24px;
+}
+.description {
+  font-size: 13px;
+  color: var(--color-text);
+  line-height: 1.6;
+  margin-bottom: 40px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.actions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+.primaryButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-blue);
+  color: var(--color-white);
+  border-radius: 40px;
+  width: 238px;
+  height: 40px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.23;
+  letter-spacing: -0.02em;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.primaryButton:hover,
+.primaryButton:focus {
+  background-color: var(--color-btn-dark-blue);
+}
+
+@media screen and (min-width: 834px) {
+  .title {
+    font-size: 28px;
+    line-height: 1.14;
+    letter-spacing: -0.02em;
+  }
+  .errorCode {
+    font-size: 6rem;
+  }
+  .subtitle {
+    font-size: 24px;
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+    margin-bottom: 48px;
+  }
+  .description {
+    font-size: 18px;
+  }
+  .primaryButton {
+    font-size: 16px;
+    line-height: 1.5;
+    width: 312px;
+    height: 56px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .title {
+    font-size: 56px;
+    line-height: 1.07;
+    letter-spacing: -0.02em;
+  }
+  .errorCode {
+    font-size: 8rem;
+  }
+  .subtitle {
+    font-size: 30px;
+    line-height: 1.56;
+  }
+  .description {
+    font-size: 20px;
+  }
+}
