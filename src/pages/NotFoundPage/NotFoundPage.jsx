@@ -7,7 +7,7 @@ export default function NotFoundPage() {
       <div className={`container ${css.container}`}>
         <div className={css.content}>
           <div className={css.logo}>
-            <img src="/icons/180x180.png" alt="TailsFinder Logo" />
+            <img width="120" src="/icons/180x180.png" alt="TailsFinder Logo" />
           </div>
 
           <h1 className={css.title}>TailsFinder</h1>

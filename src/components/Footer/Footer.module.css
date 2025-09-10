@@ -39,8 +39,8 @@
   color: var(--color-btn-dark-blue);
 }
 .img {
-  width: 174px;
-  height: 154px;
+  width: 147px;
+  height: 147px;
   margin-bottom: 24px;
 }
 .title {
@@ -74,10 +74,10 @@
   gap: 12px;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.contactItem:hover,
+/* .contactItem:hover,
 .contactItem:focus {
   color: var(--color-btn-dark-blue);
-}
+} */
 .titleNav {
   font-weight: 700;
   font-size: 14px;
@@ -150,8 +150,8 @@
   }
 
   .img {
-    width: 215px;
-    height: 136px;
+    width: 150px;
+    height: 150px;
   }
   .containerNavigation {
     width: 249px;
@@ -238,5 +238,9 @@
   }
   .containerNavMedia {
     gap: 60px;
+  }
+    .img {
+    width: 160px;
+    height: 160px;
   }
 }

@@ -1,172 +1,111 @@
 import css from "./AdDetails.module.css";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import Button from "../Button/Button";
+import { selectIsLoggedIn, selectUserInfo } from "../../redux/auth/selectors";
+import { useNavigate } from "react-router-dom";
+export default function AdDetails({ ad }) {
+  let status = "";
+  if (ad.status === "lost") {
+    status = "Загублений";
+  } else {
+    status = "Знайдений";
+  }
 
+  const details = [
+    ad.animal.colors.join(", ").toLowerCase(),
+    ad.animal.features.toLowerCase(),
+  ]
+    .filter(Boolean)
+    .join(", ");
 
-export default function AdDetails() {
+  const navigate = useNavigate();
+
+  const user = useSelector(selectUserInfo);
+  console.log(user);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
+  const handleShow = () => {
+    if (!isLoggedIn) {
+      navigate("/auth/register");
+    } else {
+      console.log("hello");
+    }
+  };
   return (
-    <section className="section">
+    <section className={css.section}>
       <div className={`container ${css.container}`}>
-        <h2 className={css.title}>Ad Title</h2>
+        <div className={css.backContainer}>
+          <Link to="/" className={css.backBtn}>
+            <svg
+              className={css.icon}
+              width="24"
+              height="24"
+              aria-label="Перейти на сторінку оголошення"
+            >
+              <use href="/sprite.svg#icon-arrow-left"></use>
+            </svg>
+            Повернутися назад
+          </Link>
+        </div>
+        <ul className={css.listImg}>
+          {ad.photos.map((p, index) => (
+            <li
+              key={index}
+              className={index === 0 ? css.bidItem : css.smallItem}
+            >
+              <img
+                className={index === 0 ? css.bidImg : css.smalImg}
+                src={p}
+                alt={ad.context.description}
+              />
+            </li>
+          ))}
+        </ul>
+
+        <div className={css.titleContainer}>
+          <h3 className={css.title}>
+            {[ad.animal.species, "(", details, ")"].filter(Boolean).join(" ")}
+          </h3>
+          <ul className={css.list}>
+            <li className={`${css.item} ${css[ad.status]}`}>{status}</li>
+            <li className={css.item}>{ad.animal.species}</li>
+            <li className={css.item}>{ad.animal.sex}</li>
+            <li className={css.item}>{ad.animal.size}</li>
+            {ad.animal.breed && <li className={css.item}>{ad.animal.breed}</li>}
+            <li className={css.item}>{ad.animal.colors.join(", ")}</li>
+            <li className={css.item}>
+              {[ad.context.location.city, ad.context.location.district]
+                .filter(Boolean)
+                .join(", ")}
+            </li>
+          </ul>
+        </div>
+
+        <h3 className={css.titleSecond}>Опис:</h3>
+        <p className={css.description}>{ad.context.description}</p>
+        <div className={css.contact}>
+          <div className={css.contactContainer}>
+            <p className={css.name}>{ad.user.name}</p>
+            <p className={css.date}>
+              {" "}
+              {new Date(ad.context.date).toLocaleDateString("uk-UA", {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric",
+              })}
+            </p>
+          </div>
+          <Button
+            className={css.btnNumber}
+            type="button"
+            variant="darkButton"
+            onClick={handleShow}
+          >
+            Зв&apos;язатися з автором
+          </Button>
+        </div>
       </div>
     </section>
   );
 }
-
-
-// import clsx from "clsx";
-// import { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import {
-//   addRecipeToFav,
-//   removeRecipeFromFav,
-// } from "../../redux/recipes/operations";
-// import { selectRecipesError, selectRecipesLoading, } from "../../redux/recipes/selectors";
-// import toast from "react-hot-toast";
-// import ToastInfo from "../ToastInfo/ToastInfo";
-// import css from "./RecipeDetails.module.css";
-
-// import Button from "../Button/Button";
-// import { selectIsLoggedIn } from "../../redux/auth/selectors";
-// // import { useNavigate } from "react-router-dom";
-// // import { selectCategories } from "../../redux/filters/selectors";
-
-// import { openModal } from "../../redux/modal/slice";
-
-// export default function RecipeDetails({ recipe }) {
-//   const dispatch = useDispatch();
-//   const error = useSelector(selectRecipesError);
-//   const isLoading = useSelector(selectRecipesLoading);
-
-//   const isLoggedIn = useSelector(selectIsLoggedIn);
-//   // const navigate = useNavigate();
-
-//   // const categories = useSelector(selectCategories);
-//   // const category = categories.find((cat) => cat._id === recipe.category);
-//   // const categoryName = category ? category.name : "Unknown";
-//   const categoryName = recipe.category ? recipe.category : "Unknown";
-
-//   const instruction = recipe.instructions.split(/\n/g);
-
-//   const handleButtonClick = async () => {
-//     if (!isLoggedIn) {
-//       dispatch(openModal({ modalType: "not-auth" }));
-//       return;
-//     }
-
-//     try {
-//       if (recipe.isFavorite) {
-//         await dispatch(removeRecipeFromFav(recipe._id)).unwrap();
-//         toast.success("Recipe delete from favorites!");
-//         // здесь можно, например, открыть другую модалку или обновить список
-//       } else {
-//         await dispatch(addRecipeToFav(recipe._id)).unwrap();
-//         toast.success("Recipe added to favorites!");
-//       }
-//     } catch (error) {
-//       console.error("Ошибка при обновлении избранного", error);
-//     }
-//   };
-//   useEffect(() => {
-//     if (error) {
-//       toast.error("Something went wrong... Please try again");
-//     }
-//   }, [error]);
-
-//   return (
-//     <section className="section">
-//       {!isLoading && !error && (
-//         <div className={clsx("container", css.container)}>
-//         <h1 className={css.title}>{recipe.title}</h1>
-//         <div className={css.wrapperImage}>
-//           <img
-//             className={css.image}
-//             src={recipe.thumb}
-//             alt={recipe.description}
-//           />
-//         </div>
-//         <div className={css.wrapper}>
-//           <div className={css.info_container}>
-//             <div className={css.info_wrapper}>
-//               <h2 className={css.subtitle}>General informations</h2>
-//               <p className={css.text}>
-//                 <span className={css.info_accent_text}>Category:</span>{" "}
-//                 {categoryName}
-//               </p>
-//               <p className={css.text}>
-//                 <span className={css.info_accent_text}>Cooking time:</span>{" "}
-//                 {recipe.time} minutes
-//               </p>
-//               {recipe.cals && (
-//                 <p className={css.text}>
-//                   <span className={css.info_accent_text}>Caloric content:</span>{" "}
-//                   Approximately {recipe.cals} kcal per serving
-//                 </p>
-//               )}
-//             </div>
-
-//             {recipe.isFavorite ? (
-//               <Button
-//                 variant="darkButton"
-//                 className={css.btn}
-//                 onClick={handleButtonClick}
-//               >
-//                 Saved
-//                 <svg className={css.icon_saved} width="24" height="24">
-//                   <use href="/sprite.svg#icon-add-to-favorite-24px"></use>
-//                 </svg>
-//               </Button>
-//             ) : (
-//               <Button
-//                 variant="darkButton"
-//                 className={css.btn}
-//                 onClick={handleButtonClick}
-//               >
-//                 Save
-//                 <svg width="24" height="24">
-//                   <use href="/sprite.svg#icon-add-to-favorite-24px"></use>
-//                 </svg>
-//               </Button>
-//             )}
-//           </div>
-
-//           <div className={css.main_text_wrapper}>
-//             <div>
-//               <h2 className={`${css.subtitle} ${css.about_title}`}>
-//                 About recipe
-//               </h2>
-//               <p className={css.text}>{recipe.description}</p>
-//             </div>
-
-//             <div>
-//               <h2 className={`${css.subtitle} ${css.about_title}`}>
-//                 Ingredients:
-//               </h2>
-//               <ul className={css.ingredients_list}>
-//                 {recipe.ingredients.map((el) => (
-//                   <li className={css.text} key={el.ingredient._id}>
-//                     {el.ingredient.name} — {el.measure}
-//                   </li>
-//                 ))}
-//               </ul>
-//             </div>
-
-//             <div>
-//               <h2 className={`${css.subtitle} ${css.instruction_title}`}>
-//                 Preparation Steps:
-//               </h2>
-//               <ol className={css.instruction_list}>
-//                 {instruction.map((el, idx) => (
-//                   <li className={css.text} key={idx}>
-//                     {el}
-//                   </li>
-//                 ))}
-//               </ol>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//       )}
-      
-//       <ToastInfo />
-//     </section>
-//   );
-// }

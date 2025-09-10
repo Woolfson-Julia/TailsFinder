@@ -1,27 +1,26 @@
 @font-face {
-  font-family: 'E-Ukraine';
-  src: url('/fonts/e-ukraine-light.woff2') format('woff2');
+  font-family: "E-Ukraine";
+  src: url("/fonts/e-ukraine-light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
-  font-family: 'E-Ukraine';
-  src: url('/fonts/e-ukraine-regular.woff2') format('woff2');
+  font-family: "E-Ukraine";
+  src: url("/fonts/e-ukraine-regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'E-Ukraine';
-  src: url('/fonts/e-ukraine-bold.woff2') format('woff2');
+  font-family: "E-Ukraine";
+  src: url("/fonts/e-ukraine-bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
 }
 
-
 :root {
   /* Typography */
-  --font-family: 'E-Ukraine', sans-serif;
+  --font-family: "E-Ukraine", sans-serif;
 
   /* Neutral colors */
   --color-white: #fff;
@@ -51,7 +50,6 @@
   --section-padding-desktop: 100px;
 }
 
-
 html,
 body,
 #root {
@@ -64,6 +62,9 @@ body {
   color: var(--color-black);
   margin: 0;
   padding: 0;
+}
+body.modal-open {
+  overflow: hidden;
 }
 
 h1,
@@ -131,7 +132,7 @@ svg {
     max-width: var(--max-width-desktop);
   }
   .section {
-  padding-top: var(--section-padding-desktop);
-  padding-bottom: var(--section-padding-desktop);
-}
+    padding-top: var(--section-padding-desktop);
+    padding-bottom: var(--section-padding-desktop);
+  }
 }
