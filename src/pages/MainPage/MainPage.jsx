@@ -36,7 +36,7 @@ export default function MainPage() {
             alt="dog at laptop"
           />
           <div className={css.buttonContainer}>
-            <NavLink to={isLoggedIn ? "/find-pet" : "/auth/register"}>
+            <NavLink to={isLoggedIn ? "/ads/add" : "/auth/register"}>
               <Button
                 type="button"
                 variant="darkButton"
@@ -45,7 +45,7 @@ export default function MainPage() {
                 Знайти тварину
               </Button>
             </NavLink>
-            <NavLink to={isLoggedIn ? "/return-home" : "/auth/register"}>
+            <NavLink to={isLoggedIn ? "/ads/add" : "/auth/register"}>
               <Button
                 type="button"
                 variant="lightButton"

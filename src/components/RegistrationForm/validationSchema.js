@@ -17,7 +17,6 @@ export const validationSchema = Yup.object({
     .required("Пароль обов’язковий"),
 
   phone: Yup.string()
-    .nullable() // может быть null
     .notRequired(), // optional
 
   notificationsAllowed: Yup.boolean().notRequired(),

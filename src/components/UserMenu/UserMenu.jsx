@@ -22,7 +22,7 @@ export default function UserMenu({ onLinkClick }) {
 
   return (
     <div className={css.menu}>
-      <Link className={css.addBtn} onClick={onLinkClick} to="/add">
+      <Link className={css.addBtn} onClick={onLinkClick} to="/ads/add">
         Створити оголошення
       </Link>
 

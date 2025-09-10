@@ -2,13 +2,12 @@ import * as Yup from "yup";
 
 export const validationSchema = Yup.object({
   email: Yup.string()
-    .min(5, "Email must be at least 5 characters")
-    .max(128, "Email cannot be longer than 128 characters")
-    .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Please enter a valid email")
-    .required("Email is required"),
+    .email("Некоректний email")
+    .max(128, "Email не може бути довшим за 128 символів")
+    .required("Email обов'язковий"),
 
   password: Yup.string()
-    .min(8, "Password must be at least 8 characters")
-    .max(128, "Password cannot be longer than 128 characters")
-    .required("Password is required"),
+    .min(8, "Пароль має містити щонайменше 8 символів")
+    .max(128, "Пароль не може бути довшим за 128 символів")
+    .required("Пароль обов'язковий"),
 });
