@@ -29,8 +29,15 @@ const slice = createSlice({
       state.selectedStatus = action.payload;
     },
     resetFilters: (state, action) => {
-      const key = action.payload;
-      state[key] = "";
+      if (action.payload) {
+        state[action.payload] = "";
+      } else {
+        // сброс всех фильтров
+        state.selectedCity = "";
+        state.selectedDistrict = "";
+        state.selectedSpecies = "";
+        state.selectedStatus = "";
+      }
     },
   },
   extraReducers: (builder) => {

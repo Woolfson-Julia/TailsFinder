@@ -33,7 +33,7 @@ export default function AdsListForPageLookFor() {
   return (
     <>
       {!isLoading && filterAds.length === 0 && !isError ? (
-        <p className={css.text}>Оголошень за данними критеріями нема</p>
+        <p className={css.text}>Оголошень за данними критеріями немає</p>
       ) : (
         <ul className={css.list}>
           {filterAds.map((ad) => (

@@ -7,36 +7,23 @@ export default function NotFound() {
       <div className={css.container}>
         <div className={css.content}>
           <div className={css.logo}>
-            <svg fill="currentColor" aria-hidden="true">
-              <use xlinkHref="/sprite.svg#icon-logo" />
-            </svg>
+            <img width="120" src="/icons/180x180.png" alt="TailsFinder Logo" />
           </div>
 
-          <h1 className={css.title}>Tasteorama</h1>
+          <h1 className={css.title}>TailsFinder</h1>
 
           <div className={css.errorCode}>404</div>
 
-          <h2 className={css.subtitle}>Recipe not found!</h2>
+          <h2 className={css.subtitle}>Оголошення не знайдено</h2>
           <p className={css.description}>
-            Sorry, an error has occurred. The recipe you are looking for does
-            not exist or has been removed.
+            Вибачте, сталася помилка. Оголошення, яке ви шукаєте, не існує або було
+            видалено.
           </p>
 
           <div className={css.actions}>
             <Link to="/" className={css.primaryButton}>
-              Go home
+              Повернутися на головну
             </Link>
-          </div>
-
-          <div className={css.decorativeElements}>
-            <div className={css.ingredient}>🥕</div>
-            <div className={css.ingredient}>🍅</div>
-            <div className={css.ingredient}>🥬</div>
-            <div className={css.ingredient}>🧄</div>
-            <div className={css.ingredient}>🥒</div>
-            <div className={css.ingredient}>🌶️</div>
-            <div className={css.ingredient}>🧅</div>
-            <div className={css.ingredient}>🥔</div>
           </div>
         </div>
       </div>

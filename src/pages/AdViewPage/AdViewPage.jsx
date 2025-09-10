@@ -1,31 +1,38 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
-// import {selectRecipesError, selectRecipesLoading } from '../../redux/recipes/selectors';
-// import { fetchRecipeById } from '../../redux/recipes/operations';
+import { useDispatch, useSelector } from "react-redux";
 
-// import NotFound from '../../components/NotFound/NotFound';
+
+
+import {
+  selectAdvertSelected,
+  selectAdvertsLoading,
+  selectAdvertsError,
+} from "../../redux/adverts/selectors";
+import { fetchAdvertById } from "../../redux/adverts/operations";
+import Loader from "../../components/Loader/Loader";
+import NotFound from '../../components/NotFound/NotFound'
 import AdDetails from "../../components/AdDetails/AdDetails";
-// import RecipeDetails from '../../components/RecipeDetails/RecipeDetails';
-// import Loader from '../../components/Loader/Loader';
-import css from "./AdViewPage.module.css";
+
+
 
 export default function AdViewPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  // const recipe = useSelector(selectCurrentRecipe);
-  // const error = useSelector(selectRecipesError);
-  // const isLoading = useSelector(selectRecipesLoading);
+
+  const ad = useSelector(selectAdvertSelected);
+  const isLoading = useSelector(selectAdvertsLoading);
+  const isError = useSelector(selectAdvertsError);
+
 
   useEffect(() => {
-    // dispatch(fetchRecipeById(id));
+    dispatch(fetchAdvertById(id));
   }, [id, dispatch]);
   return (
     <>
-      {/* {isLoading && <Loader />}
-      {error && <NotFound />} */}
-      {/* {recipe && <RecipeDetails recipe={recipe} />} */}
-      <AdDetails />
+      {isLoading && <Loader />}
+      {isError && <NotFound />}
+      {ad && <AdDetails ad={ad} />}
     </>
   );
 }
