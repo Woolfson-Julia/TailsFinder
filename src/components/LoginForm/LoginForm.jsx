@@ -26,17 +26,14 @@ export default function LoginForm() {
   const passwordFieldId = useId();
   const dispatch = useDispatch();
 
-const handleSubmit = (values, actions) => {
-  dispatch(logIn(values))
-    .unwrap()
-    .then(() => {
-      actions.resetForm(); // сброс только при успешной авторизации
-      navigate("/"); // например, редирект на главную
-    })
-    .catch((err) => {
-      console.error("Login error:", err);
-    });
-};
+
+  const handleSubmit = async (values, actions) => {
+    dispatch(logIn(values));
+
+    actions.resetForm();
+  };
+
+  
   return (
     <>
       {isLoading ? (
@@ -140,13 +137,13 @@ const handleSubmit = (values, actions) => {
 
               <div className={css.div}>
               <svg className={css.icon} viewBox="0 0 32 32">
-                <use href="../../../public/sprite.svg#icon-flat-color-icons_google" />
+                <use href="/sprite.svg#icon-flat-color-icons_google" />
               </svg>
               <svg className={css.icon} viewBox="0 0 33 32">
-                <use href="../../../public/sprite.svg#icon-facebook2" />
+                <use href="/sprite.svg#icon-facebook2" />
               </svg>
               <svg className={css.icon} viewBox="0 0 32 32">
-                <use href="../../../public/sprite.svg#icon-prime_microsoft" />
+                <use href="/sprite.svg#icon-prime_microsoft" />
               </svg>
               </div>
             </div>

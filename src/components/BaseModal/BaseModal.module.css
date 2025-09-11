@@ -2,6 +2,7 @@
   max-width: 90vw;
   width: 362px;
   padding: 56px 24px 32px 24px;
+  background-color: var(--color-bg);
 }
 
 .savedContent {

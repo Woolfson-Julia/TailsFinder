@@ -2,27 +2,51 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  margin-top: 24px;
 }
+
 .btn {
   width: 100%;
-  border-radius: 8px;
-  padding: 16px 0;
+  border-radius: 12px;
+  padding: 14px 0;
   text-align: center;
   font-weight: 600;
-  font-size: 18px;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+.btn:hover {
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.cancelBtn {
+  background-color: var(--color-white)
+}
+
+.cancelBtn:hover {
+  background-color: var(--color-blue)
+}
+
 .logoutBtn {
-  background-color: #c80000;
+  background-color: #ff4d4f;
+  color: #fff;
+}
+
+.logoutBtn:hover {
+  background-color: #e04344;
 }
 
 @media screen and (min-width: 834px) {
   .actions {
     flex-direction: row-reverse;
-    gap: 27px;
+    gap: 24px;
   }
+
   .btn {
-    min-width: 164.5px;
+    min-width: 160px;
     padding: 12px 0;
     font-size: 16px;
   }

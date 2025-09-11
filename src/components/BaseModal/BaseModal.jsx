@@ -6,7 +6,6 @@ import {
 } from "../../redux/modal/selectors.js";
 import { closeModal } from "../../redux/modal/slice.js";
 import css from "./BaseModal.module.css";
-import NotAuthModalActions from "../NotAuthModalActions/NotAuthModalActions.jsx";
 import LogoutModalActions from "../LogoutModalActions/LogoutModalActions.jsx";
 import Button from "../Button/Button.jsx";
 
@@ -45,11 +44,6 @@ export default function BaseModal() {
   let additionalClass = "";
 
   switch (modalType) {
-    case "not-auth":
-      title = "Error while saving";
-      message = "To save this recipe, you need to authorize first";
-      content = <NotAuthModalActions />;
-      break;
 
     case "logout":
       title = "Are you sure?";
