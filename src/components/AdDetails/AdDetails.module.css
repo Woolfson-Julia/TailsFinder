@@ -30,6 +30,9 @@
 .bigItem {
   width: 100%;
   margin-bottom: 12px;
+  justify-content: center;
+  display: flex
+;
 }
 .bigImg {
   border-radius: 20px;
