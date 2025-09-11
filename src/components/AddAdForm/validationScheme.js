@@ -1,9 +1,6 @@
 import * as Yup from "yup";
 
 export const validationSchema = Yup.object({
-  photos: Yup.array()
-    .min(1, "Додайте хоча б одне фото")
-    .max(4, "Максимум 4 фото"),
   status: Yup.string().required("Оберіть статус"),
   species: Yup.string().required("Оберіть тварину"),
   colors: Yup.array()

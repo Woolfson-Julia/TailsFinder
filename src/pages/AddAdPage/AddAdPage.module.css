@@ -1,6 +1,7 @@
 .addAdMain {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   margin-top: 20px;
 }
@@ -44,10 +45,20 @@
 
 @media screen and (min-width: 1440px) {
   .addAdMain {
-    margin-top: 40px;
     flex-direction: row;
-    justify-content: center;
     column-gap: 10px;
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    min-width: 1439px;
+    max-width: 1440px;
+    margin: 0;
+  }
+  .addAdSection {
+    width: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .addAdAside {
     display: flex;
@@ -62,7 +73,6 @@
   }
   .addAdAsideContent {
     width: 381px;
-    padding-left: 50px;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -70,16 +80,30 @@
     row-gap: 24px;
   }
   .addAdAsideTitle {
+    font-weight: 400;
     font-size: 28px;
-    line-height: 32px;
-    letter-spacing: -0.56px;
+    line-height: 1.14286;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+    color: #fff;
   }
   .addAdAsideList {
-    width: 100%;
     font-size: 18px;
     line-height: 28px;
     letter-spacing: -0.36px;
     list-style: disc;
     margin: 28px 50px;
+  }
+  .addAdAsideList li {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.55556;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin-left: 20px;
+    margin-bottom: 12px;
+  }
+  .addAdAsideList li:last-child {
+    margin-bottom: 0;
   }
 }
