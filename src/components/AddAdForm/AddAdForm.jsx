@@ -56,6 +56,7 @@ const AddAdForm = () => {
       values.photos.forEach((file) => formData.append("photos", file));
 
       formData.append("status", values.status);
+      formData.append("species", values.species);
       formData.append("sex", values.sex);
       formData.append("size", values.size);
       formData.append("description", values.description);
@@ -71,7 +72,10 @@ const AddAdForm = () => {
 
       formData.append("date", values.date.toISOString());
 
-      formData.append("notificationsAllowed", values.notificationsAllowed);
+      formData.append(
+        "notificationsAllowed",
+        values.notificationsAllowed.toString()
+      );
 
       console.log("FormData contents:");
       for (let [key, value] of formData.entries()) {

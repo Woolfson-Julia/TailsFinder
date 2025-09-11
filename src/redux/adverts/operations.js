@@ -47,11 +47,7 @@ export const createAdvert = createAsyncThunk(
   "adverts/create",
   async (formData, thunkAPI) => {
     try {
-      const res = await axios.post("/adverts", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const res = await axios.post("/adverts/", formData);
       return res.data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
