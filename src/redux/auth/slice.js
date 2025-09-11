@@ -74,14 +74,14 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
         state.accessToken = null;
         toast.error(
-          "Oops! An error occurred. Please try refreshing the page or log in again."
+          "Упс! Виникла помилка. Спробуйте оновити сторінку або увійти знову."
         );
       })
       .addCase(updateUser.pending, handlePending)
       .addCase(updateUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.loading = false;
-        toast.success("Profile updated successfully!");
+        toast.success("Профіль успішно оновлено!");
       })
       .addCase(updateUser.rejected, handleRejected),
 });

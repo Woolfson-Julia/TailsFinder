@@ -20,7 +20,7 @@ export default function AdCard({ advert }) {
     .join(", ");
 
   return (
-    <div className={css.container}>
+    <Link className={css.container} to={`/ads/${advert._id}`}>
       <img
         className={css.image}
         src={advert.photos[0]}
@@ -49,7 +49,9 @@ export default function AdCard({ advert }) {
               .filter(Boolean)
               .join(" ")}
           </h3>
-          <Link to={`/ads/${advert._id}`} className={css.link}>
+          <div
+            className={css.link}
+          >
             <svg
               className={css.icon}
               width="32"
@@ -58,7 +60,7 @@ export default function AdCard({ advert }) {
             >
               <use href="/sprite.svg#icon-arrow-expand"></use>
             </svg>
-          </Link>
+          </div>
         </div>
         <p className={css.description}>{advert.context.description}</p>
         <p className={css.date}>
@@ -70,6 +72,6 @@ export default function AdCard({ advert }) {
           })}
         </p>
       </div>
-    </div>
+    </Link>
   );
 }

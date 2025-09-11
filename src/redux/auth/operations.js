@@ -118,16 +118,3 @@ export const updateUser = createAsyncThunk(
   }
 );
 
-// export const addAdvertToFav = createAsyncThunk(
-//   "auth/addAdvertToFav",
-//   async (advertId, thunkAPI) => {
-//     try {
-//       const res = await axios.post(`/users/favAds/${advertId}`);
-//       return res.data.data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(
-//         error.response?.data?.message || error.message
-//       );
-//     }
-//   }
-// );

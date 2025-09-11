@@ -55,10 +55,10 @@ export default function AdDetails({ ad }) {
           {ad.photos.map((p, index) => (
             <li
               key={index}
-              className={index === 0 ? css.bidItem : css.smallItem}
+              className={index === 0 ? css.bigItem : css.smallItem}
             >
               <img
-                className={index === 0 ? css.bidImg : css.smalImg}
+                className={index === 0 ? css.bigImg : css.smallImg}
                 src={p}
                 alt={ad.context.description}
               />
@@ -105,7 +105,7 @@ export default function AdDetails({ ad }) {
             variant="darkButton"
             onClick={handleShow}
           >
-            {showPhone ? userInfo.user.phone : "Зв’язатися з автором"}
+            {showPhone ? userInfo.user.phone : "Зв'язатися з автором"}
           </Button>
         </div>
       </div>

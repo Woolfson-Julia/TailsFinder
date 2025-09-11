@@ -74,8 +74,9 @@
 .titleContainer {
   display: flex;
   gap: 4px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  width: 100%;
   margin-bottom: 24px;
 }
 .icon {
