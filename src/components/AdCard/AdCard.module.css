@@ -15,7 +15,7 @@
   width: 100%;
   border-radius: 20px;
   max-width: 364px;
-  height: auto;
+  max-height: 270px;
   object-fit: cover;
   margin-bottom: 24px;
 }

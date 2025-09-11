@@ -38,9 +38,9 @@ export const selectPaginatedAdverts = createSelector(
   (filtered, pagination) => {
     if (!filtered) return [];
 
-    const { page = 1, perPage = 6 } = pagination;
-    // const start = (page - 1) * perPage;
-    const end = page + perPage;
+        const { page = 1, perPage = 6 } = pagination;
+        const end = page * perPage;
+
 
     return filtered.slice(0, end);
   }

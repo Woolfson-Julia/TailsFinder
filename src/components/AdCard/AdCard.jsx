@@ -23,7 +23,7 @@ export default function AdCard({ advert }) {
     <div className={css.container}>
       <img
         className={css.image}
-        src={advert.photos}
+        src={advert.photos[0]}
         alt={advert.context.description}
       />
       <div className={css.content}>
