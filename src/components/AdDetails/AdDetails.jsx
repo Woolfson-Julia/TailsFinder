@@ -29,7 +29,7 @@ export default function AdDetails({ ad }) {
 
   const handleShow = () => {
     if (!isLoggedIn) {
-      navigate("/register");
+      navigate("/auth/register");
     } else {
       setShowPhone(true);
     }
