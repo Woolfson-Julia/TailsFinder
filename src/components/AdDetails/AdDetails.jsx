@@ -10,12 +10,11 @@ export default function AdDetails({ ad }) {
   const [showPhone, setShowPhone] = useState(false);
   const [phone, setPhone] = useState("");
 
-  let status = "";
-  if (ad.status === "lost") {
-    status = "Загублений";
-  } else {
-    status = "Знайдений";
-  }
+const statusClassMap = {
+  Загублено: "lost",
+  Знайдено: "found",
+};
+const statusClass = statusClassMap[ad.status] || "";
 
   const details = [
     ad.animal.colors.join(", ").toLowerCase(),
@@ -78,7 +77,7 @@ export default function AdDetails({ ad }) {
             {[ad.animal.species, "(", details, ")"].filter(Boolean).join(" ")}
           </h3>
           <ul className={css.list}>
-            <li className={`${css.item} ${css[ad.status]}`}>{status}</li>
+            <li className={`${css.item} ${css[statusClass]}`}>{ad.status}</li>
             <li className={css.item}>{ad.animal.species}</li>
             <li className={css.item}>{ad.animal.sex}</li>
             <li className={css.item}>{ad.animal.size}</li>

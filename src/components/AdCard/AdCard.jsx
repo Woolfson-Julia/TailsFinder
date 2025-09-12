@@ -5,12 +5,12 @@ import css from "./AdCard.module.css";
 
 
 export default function AdCard({ advert }) {
-  let status = "";
-  if (advert.status === "lost") {
-    status = "Загублений";
-  } else {
-    status = "Знайдений";
-  }
+
+  const statusClassMap = {
+    Загублено: "lost",
+    Знайдено: "found",
+  };
+  const statusClass = statusClassMap[advert.status] || "";
 
   const details = [
     advert.animal.colors.join(", ").toLowerCase(),
@@ -24,11 +24,12 @@ export default function AdCard({ advert }) {
       <img
         className={css.image}
         src={advert.photos[0]}
+        height={362}
         alt={advert.context.description}
       />
       <div className={css.content}>
         <ul className={css.list}>
-          <li className={`${css.item} ${css[advert.status]}`}>{status}</li>
+          <li className={`${css.item} ${css[statusClass]}`}>{advert.status}</li>
           <li className={css.item}>{advert.animal.species}</li>
           <li className={css.item}>{advert.animal.sex}</li>
           <li className={css.item}>{advert.animal.size}</li>
@@ -49,9 +50,7 @@ export default function AdCard({ advert }) {
               .filter(Boolean)
               .join(" ")}
           </h3>
-          <div
-            className={css.link}
-          >
+          <div className={css.link}>
             <svg
               className={css.icon}
               width="32"

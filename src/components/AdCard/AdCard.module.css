@@ -15,7 +15,7 @@
   width: 100%;
   border-radius: 20px;
   max-width: 364px;
-  max-height: 270px;
+  height: 270px;
   object-fit: cover;
   margin-bottom: 24px;
 }
@@ -107,7 +107,6 @@
   }
   .image {
     max-width: 378px;
-    height: auto;
     margin-bottom: 20px;
   }
   .list {
