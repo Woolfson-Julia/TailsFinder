@@ -2,11 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(
-    135deg,
-    var(--color-white) 0%,
-    var(--color-bg) 100%
-  );
+  background: var(--color-bg);
   position: relative;
   overflow: hidden;
 }

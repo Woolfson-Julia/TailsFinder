@@ -14,6 +14,9 @@ import Button from "../Button/Button.jsx";
 import ColorsSelect from "../ColorSelect/ColorsSelect.jsx";
 import { fetchEnumOptions } from "../../redux/enums/operations.js";
 import { createAdvert } from "../../redux/adverts/operations";
+import {selectAdvertsLoading} from "../../redux/adverts/selectors.js"
+import Loader from "../Loader/Loader.jsx";
+
 
 import {
   selectColors,
@@ -45,55 +48,47 @@ const AddAdForm = () => {
   const sizeOptions = useSelector(selectSize);
   const statusOptions = useSelector(selectStatus);
 
+
+  const isLoading = useSelector(selectAdvertsLoading);
   useEffect(() => {
     dispatch(fetchEnumOptions());
   }, [dispatch]);
 
-  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-    try {
-      const formData = new FormData();
 
-      values.photos.forEach((file) => formData.append("photos", file));
+const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+  try {
+    const formData = new FormData();
 
-      formData.append("status", values.status);
-      formData.append("species", values.species);
-      formData.append("sex", values.sex);
-      formData.append("size", values.size);
-      formData.append("description", values.description);
-      if (values.breed) formData.append("breed", values.breed);
-      if (values.features) formData.append("features", values.features);
+    values.photos.forEach((file) => formData.append("photos", file));
 
-      formData.append("colors", JSON.stringify(values.colors));
+    formData.append("status", values.status);
+    formData.append("species", values.species);
+    formData.append("sex", values.sex);
+    formData.append("size", values.size);
+    formData.append("description", values.description);
+    if (values.breed) formData.append("breed", values.breed);
+    if (values.features) formData.append("features", values.features);
 
-      formData.append(
-        "location",
-        JSON.stringify([values.location.lng, values.location.lat])
-      );
+    formData.append("colors", JSON.stringify(values.colors));
+    formData.append(
+      "location",
+      JSON.stringify([values.location.lng, values.location.lat])
+    );
+    formData.append("date", values.date.toISOString());
+    formData.append(
+      "notificationsAllowed",
+      values.notificationsAllowed.toString()
+    );
 
-      formData.append("date", values.date.toISOString());
+    await dispatch(createAdvert(formData)).unwrap();
 
-      formData.append(
-        "notificationsAllowed",
-        values.notificationsAllowed.toString()
-      );
-
-      console.log("FormData contents:");
-      for (let [key, value] of formData.entries()) {
-        console.log(key, value);
-      }
-
-      const response = await dispatch(createAdvert(formData))
-        .unwrap()
-        .then(() => {
-          console.log("Ad created successfully:", response);
-          resetForm();
-          navigate("/");
-        });
-    } catch (error) {
-      console.error("Failed to submit ad:", error);
-    }
-    setSubmitting(false);
-  };
+    resetForm();
+    navigate("/ads");
+  } catch (error) {
+    console.error("Failed to submit ad:", error);
+  }
+  setSubmitting(false);
+};
 
   return (
     <>
@@ -112,7 +107,6 @@ const AddAdForm = () => {
         }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-          console.log("Formik onSubmit called!", values);
           handleSubmit(values, { setSubmitting, resetForm });
         }}
       >
@@ -353,6 +347,7 @@ const AddAdForm = () => {
           </Form>
         )}
       </Formik>
+      {isLoading && <Loader/>}
     </>
   );
 };

@@ -35,7 +35,7 @@ advertsListenerMiddleware.startListening({
 advertsListenerMiddleware.startListening({
   actionCreator: createAdvert.fulfilled,
   effect: async () => {
-    toast.success("Advert successfully created");
+    toast.success("Оголошення успішно створенно");
   },
 });
 

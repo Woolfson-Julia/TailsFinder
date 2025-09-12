@@ -18,6 +18,8 @@ export default function FiltersForm({
   const selectedSpecies = useSelector(selectSelectedSpecies);
   const selectedCity = useSelector(selectSelectedCity);
   const selectedSDistrict = useSelector(selectSelectedDistrict);
+
+
   return (
     <form className={css.form}>
       <select
@@ -31,7 +33,7 @@ export default function FiltersForm({
         </option>
         {statuses.map((status) => (
           <option key={nanoid()} value={status} className={css.option}>
-            {status === "lost" ? "Загублений" : "Знайдений"}
+            {status}
           </option>
         ))}
       </select>

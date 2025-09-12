@@ -17,6 +17,10 @@
 
 .backdrop {
   position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   inset: 0;
   background: rgba(0, 0, 0, 0.4);
   display: flex;
@@ -26,16 +30,15 @@
 }
 
 .modal {
+  position: fixed;
   background: var(--color-bg);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 24px;
-  border-radius: 12px;
-  max-width: 400px;
-  width: 90%;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  height: 100vh;
 }
 .title {
   font-weight: 400;
@@ -100,6 +103,9 @@
 @media screen and (min-width: 834px) {
   .modal {
     max-width: 600px;
+    border-radius: 12px;
+    height: auto;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   }
   .title {
     font-size: 30px;

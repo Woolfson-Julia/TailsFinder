@@ -66,7 +66,6 @@ const advertsSlice = createSlice({
         state.list.unshift(action.payload);
         state.latest = [action.payload, ...state.latest].slice(0, 6);
         state.loading = false;
-        toast.success("Advert successfully created!");
       })
       .addCase(createAdvert.rejected, handleRejected)
       .addCase(updateAdvert.pending, handlePending)
@@ -85,7 +84,6 @@ const advertsSlice = createSlice({
           state.selected = action.payload;
 
         state.loading = false;
-        toast.success("Advert successfully updated!");
       })
       .addCase(updateAdvert.rejected, handleRejected),
 });

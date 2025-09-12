@@ -93,7 +93,6 @@ const handleResetAll = () => {
   }, [open]);
 
 
-
   return (
     <div className={css.section}>
       <div className={css.filtersContainer}>
@@ -193,11 +192,7 @@ const handleResetAll = () => {
                     aria-label="Скинути фільтр до початкового значення"
                     onClick={() => handleReset(filtersMap[key])}
                   >
-                    {value === "lost"
-                      ? "Загублений"
-                      : value === "found"
-                      ? "Знайденний"
-                      : value}
+                    {value}
                     <svg
                       className={css.icon}
                       width="12"
