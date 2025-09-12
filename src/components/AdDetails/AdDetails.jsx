@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import Button from "../Button/Button";
-import { selectIsLoggedIn, selectUserInfo } from "../../redux/auth/selectors";
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import { fetchUserPhone } from "../../redux/utils/fetchUserPhone.js";
 import { useNavigate } from "react-router-dom";
 export default function AdDetails({ ad }) {
   const [showPhone, setShowPhone] = useState(false);
-  const userInfo = useSelector(selectUserInfo);
+  const [phone, setPhone] = useState("");
 
   let status = "";
   if (ad.status === "lost") {
@@ -27,11 +28,17 @@ export default function AdDetails({ ad }) {
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  const handleShow = () => {
+  const handleShow = async () => {
     if (!isLoggedIn) {
-      navigate("/register");
+      navigate("/auth/register");
     } else {
-      setShowPhone(true);
+      try {
+        const phoneById = await fetchUserPhone(ad.user._id);
+        setPhone(phoneById);
+        setShowPhone(true);
+      } catch (error) {
+        console.error("Помилка отримання номеру телефону:", error);
+      }
     }
   };
 
@@ -105,7 +112,7 @@ export default function AdDetails({ ad }) {
             variant="darkButton"
             onClick={handleShow}
           >
-            {showPhone ? userInfo.user.phone : "Зв'язатися з автором"}
+            {showPhone ? phone : "Зв'язатися з автором"}
           </Button>
         </div>
       </div>
