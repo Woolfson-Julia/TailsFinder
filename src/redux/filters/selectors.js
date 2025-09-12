@@ -12,7 +12,7 @@ export const selectLoading = (state) => state.filters.loading;
 export const selectError = (state) => state.filters.error;
 export const selectFilters = createSelector(
   (state) => state.filters.selectedStatus,
-  (state) => state.filters.selectSpecie,
+  (state) => state.filters.selectedSpecies,
   (state) => state.filters.selectedCity,
     (state) => state.filters.selectedDistrict,
   (status, specie, city, district) => ({
